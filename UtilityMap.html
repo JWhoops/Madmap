@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Places Search Box</title>
+    <link rel="stylesheet" type="text/css" href="map.css">
+  </head>
+  <body>
+    <header>
+      <h1>Bucky's utility Map</h1>
+      <form id="search_box">
+        <input type="text" name="location">
+        <button>Search</button>
+      </form>
+    </header>
+
+    <div id="map"></div>
+    <script type="text/javascript" src="map.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSHKMu675X0qLQXWpDJBSGoFr8iVRxsA&callback=initMap">
+    </script>
+  </body>
+</html>

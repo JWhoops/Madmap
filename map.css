@@ -1,0 +1,21 @@
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 70%;
+        width: 60%;
+        border-radius: 20px;
+        border: 2px dashed black;
+        display: inline-block;
+      }
+
+      #search_box{
+        margin: 1%;
+      }
+
+       /* Optional: Makes the sample page fill the window. */
+      html, body {
+        text-align: center;  
+        height: 100%;
+      }
+
+     
