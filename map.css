@@ -1,8 +1,8 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 70%;
-        width: 60%;
+        height: 80%;
+        width: 100%;
         border-radius: 20px;
         border: 2px dashed black;
         display: inline-block;

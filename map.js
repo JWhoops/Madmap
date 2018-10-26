@@ -1,4 +1,4 @@
-      // This example adds a search box to a map, using the Google Place Autocomplete
+        // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
       // pick list containing a mix of places and predicted search terms.
 
@@ -38,12 +38,33 @@
           }
         ];
 
+        let lng
+
+      //  $.ajax({
+      //     url: 'http://localhost:8080/USWISCUWMAD',
+      //     type: 'GET',
+      //     crossDomain: true,
+      //     dataType: 'jsonp',
+      //     success: function(data) {
+      //       var buildings = data.foundBuildings
+      //       console.log(data)
+      //       buildings.forEach((building)=>{
+      //         var marker = new google.maps.Marker({
+      //         position: new google.maps.LatLng(building.lat, building.lng),
+      //         icon: icons['info'].icon,
+      //         map: map
+      //       });    
+      //       })
+      //     },
+      //     error: function() { alert('Failed!'); }
+      // });
+         
         // Create markers.
-        features.forEach(function(feature) {
-          var marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
-            map: map
-          });
-        });
+        // features.forEach(function(feature) {
+        //   var marker = new google.maps.Marker({
+        //     position: feature.position,
+        //     icon: icons[feature.type].icon,
+        //     map: map
+        //   });
+        // });
       }
