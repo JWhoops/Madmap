@@ -19,25 +19,6 @@
           }
         };
 
-        var features = [
-          {
-            position: new google.maps.LatLng(43.076592, -89.4124875),
-            type: 'info'
-          },
-          {
-            position: new google.maps.LatLng(43.077, -89.41245),
-            type: 'info'
-          },
-          {
-            position: new google.maps.LatLng(43.077, -89.413),
-            type: 'info'
-          },
-          {
-            position: new google.maps.LatLng(43.076, -89.41245),
-            type: 'info'
-          }
-        ];
-
         let lng
 
       //  $.ajax({
@@ -68,3 +49,18 @@
         //   });
         // });
       }
+
+  let g
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position)=>{
+            //console.log("lat:" + position.coords.latitude + " lng:"+ position.coords.longitude)
+            g = position.coords
+          });
+      } else { 
+          console.log("Geolocation is not supported by this browser.");
+      }
+  }
+
+
+  // getLocation();
