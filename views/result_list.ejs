@@ -1,2 +1,11 @@
 <h1>result list</h1>
-<h2><%=sValue%></h2>
+<h2>Nearby&nbsp<%=sValue%></h2>
+<ul>
+<%buildings.forEach((building)=>{%>
+	<%building.utilities.forEach((utility)=>{%>
+		<%if(utility.type === sValue){%>
+				<li><%=building.name%>&nbspDescription:<%=utility.description%></li>
+		<%}%>
+	<%})%>
+<%})%>
+</ul>
