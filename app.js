@@ -24,7 +24,6 @@ app.get("/result_list", (req,res)=>{
 		    }
 		})
 })
-
 app.listen("3000",process.env.IP,()=>{
   console.log("start running the server")
 })

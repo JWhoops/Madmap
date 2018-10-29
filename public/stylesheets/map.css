@@ -7,11 +7,7 @@
         border: 2px dashed black;
         display: inline-block;
       }
-
-      #search_box{
-        margin: 1%;
-      }
-
+      
        /* Optional: Makes the sample page fill the window. */
       html, body {
         text-align: center;  
