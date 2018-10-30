@@ -18,9 +18,6 @@
             icon: iconBase + 'info-i_maps.png'
           }
         };
-
-        let lng
-
       //  $.ajax({
       //     url: 'http://localhost:8080/USWISCUWMAD',
       //     type: 'GET',
@@ -39,28 +36,5 @@
       //     },
       //     error: function() { alert('Failed!'); }
       // });
-         
-        // Create markers.
-        // features.forEach(function(feature) {
-        //   var marker = new google.maps.Marker({
-        //     position: feature.position,
-        //     icon: icons[feature.type].icon,
-        //     map: map
-        //   });
-        // });
       }
 
-  let g
-  function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position)=>{
-            //console.log("lat:" + position.coords.latitude + " lng:"+ position.coords.longitude)
-            g = position.coords
-          });
-      } else { 
-          console.log("Geolocation is not supported by this browser.");
-      }
-  }
-
-
-  // getLocation();
