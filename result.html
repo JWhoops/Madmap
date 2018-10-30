@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Search Result</title>
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/map.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+  </head>
+  <body>
+    <div class="ui container">
+    <header><h1>Nearby <span id="sValue"></span></h1></header>
+      <div id="resultList"></div>
+      <div class="ui divided items">
+        <div class="item">
+          <div class="image">
+            <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bascom-hall-todd-klassy.jpg">
+          </div>
+          <div class="content">
+            <a class="header">Header</a>
+            <div class="meta">
+              <span>Description</span>
+            </div>
+            <div class="description">
+              <p></p>
+            </div>
+            <div class="extra">
+              Additional Details
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+    <div id="map"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/javascripts/map.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSHKMu675X0qLQXWpDJBSGoFr8iVRxsA&callback=initMap">
+    </script>
+  </body>
+</html>

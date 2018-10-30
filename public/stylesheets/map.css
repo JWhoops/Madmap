@@ -1,17 +1,16 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 80%;
+        height: 60%;
         width: 100%;
         border-radius: 20px;
-        border: 2px dashed black;
         display: inline-block;
       }
       
        /* Optional: Makes the sample page fill the window. */
-      html, body {
+/*      html, body {
         text-align: center;  
         height: 100%;
-      }
+      }*/
 
      
