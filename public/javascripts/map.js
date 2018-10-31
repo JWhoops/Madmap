@@ -27,7 +27,23 @@ function initMap() {
           building.utilities.forEach((utility)=>{
             if(utility.type === sValue){
               creatMark(building.lat,building.lng)
-              resultList.append("<p><b>"+ building.name +"</b>&nbsp"+utility.description+"</p>")
+              resultList.append('<div class="item">'+
+          '<div class="image">'+
+            '<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bascom-hall-todd-klassy.jpg">'+
+          '</div>'+
+          '<div class="content">'+
+            '<a class="header">'+ building.name +'</a>'+
+            '<div class="meta">'+
+              '<span>'+utility.description+'</span>'+
+            '</div>'+
+            '<div class="description">'+
+              '<p></p>'+
+            '</div>'+
+            '<div class="extra">'+
+              'blah blah blah blah blah blah blah blah blah blah'+
+            '</div>'+
+          '</div>'+
+        '</div>')
             }
           })
         }
@@ -47,6 +63,3 @@ const creatMark = (lat,lng) =>{
             });
 }
 }
-
-        
-
