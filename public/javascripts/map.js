@@ -24,6 +24,7 @@ function initMap() {
       buildings.forEach((building)=>{
         if(building.utilities.length!=0){
           building.utilities.forEach((utility)=>{
+            console.log("??")
             if(utility.type === sValue){
               creatMark(building.lat,building.lng)
               resultList.append( '<li>'+ 
