@@ -1,18 +1,20 @@
+/*map*/
 #map {
   height: 40%;
   width: 100%;
   display: inline-block;
 }
+/*body width*/
 body{
-  text-align: center;
-  width: 100%;
-}
-.container{
-  height: 100%;
-  display: inline-block;
   width: 100%;
 }
 
+/*container*/
+.container{
+  height: 100%;
+}
+
+/*result list container*/
 #resultList{
   margin-top: 5px;
   text-align: left;
