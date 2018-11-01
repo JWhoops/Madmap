@@ -13,7 +13,7 @@ function initMap() {
   };  
 
   let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
-  $("#sValue").text(sValue)
+  let resultList = $("#resultList")
  $.ajax({
     url: 'http://localhost:8080/USWISCUWMAD',
     type: 'GET',
@@ -21,36 +21,20 @@ function initMap() {
     dataType: 'jsonp',
     success: function(data) {
       var buildings = data.foundBuildings
-      let resultList = $("#resultList")
       buildings.forEach((building)=>{
         if(building.utilities.length!=0){
           building.utilities.forEach((utility)=>{
             if(utility.type === sValue){
               creatMark(building.lat,building.lng)
-              resultList.append('<div class="item">'+
-          '<div class="image">'+
-            '<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bascom-hall-todd-klassy.jpg">'+
-          '</div>'+
-          '<div class="content">'+
-            '<a class="header">'+ building.name +'</a>'+
-            '<div class="meta">'+
-              '<span>'+utility.description+'</span>'+
-            '</div>'+
-            '<div class="description">'+
-              '<p></p>'+
-            '</div>'+
-            '<div class="extra">'+
-              'blah blah blah blah blah blah blah blah blah blah'+
-            '</div>'+
-          '</div>'+
-        '</div>')
+              resultList.append( '<li>'+ 
+              '<img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bascom-hall-todd-klassy.jpg" />'+
+              '<h3>'+building.name+'</h3>'+
+              '<p>'+utility.description+'</p>'+
+              '</li>')
             }
           })
         }
       })
-      if(resultList.html().length === 0){
-            resultList.append("<p>Result Not Found</p>")
-        }
     },
     error: function() { alert('Failed!'); }
 });
