@@ -1,8 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  /* hahahh */
-  /* shgdjwhgd */
+
 }
 .title{
   position: absolute;
@@ -39,11 +38,13 @@ body{
   border-radius: 50%;
   box-shadow: 0 5px 15px -5px #00000070;
   color: #e67e22;
+  font-weight: lighter;
 }
 .btn i{
   line-height:90px;
-  font-size:26px;
+  font-size:60px;
   transition: 0.2s linear;
+  font-weight: lighter;
 }
 .btn:hover i{
   transform: scale(1.3);
