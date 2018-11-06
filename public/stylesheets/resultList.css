@@ -10,7 +10,7 @@ body{
 }
 
 /*container*/
-.container{
+#pageContainer{
   height: 100%;
 }
 
