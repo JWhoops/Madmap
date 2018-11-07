@@ -6,64 +6,17 @@ function initMap() {
     }
   };  
 
-  let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
-  let resultList = $("#resultList")
-  let cMarkers = [] //current marker
- $.ajax({
+let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
+let resultList = $("#resultList")
+let resultMarks = [] //current marker
+let resultCoordinates = []
+let specificResult = $("#specificResult") 
+$.ajax({
     url: 'http://localhost:8080/USWISCUWMAD',
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',
-    //callback~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    success: function(data) {
-      var buildings = data.next//data array
-      var center = [43.076592,-89.4124875]; 
-      var hasLocation = false;
-      var dist = 0;
-      var utils = [];
-      //how to graph map
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14.5,
-        center: new google.maps.LatLng(43.076592, -89.4124875),
-        mapTypeId: 'roadmap'
-      });
-
-      infoWindow = new google.maps.InfoWindow;
-
-      // Try HTML5 geolocation
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          center = [];
-          center.push(position.coords.latitude);
-          center.push(position.coords.longitude);
-          map.setCenter({lat:center[0],lng:center[1]});
-          hasLocation = true;
-          buildings.forEach((building)=>{
-            building.utilities.forEach((utility)=>{
-            if(utility.type === sValue){
-              let tDist = measureDist(center[0],center[1],building.lat,building.lng);
-              utils.push({dist:Math.round(tDist),name:building.name,description:utility.description,
-                          lat:building.lat,lng:building.lng});
-              dist = Math.max(tDist,dist);
-              //create mark and list~~~~~~~~~~
-              creatMark(building.lat,building.lng)
-              // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            }
-          })
-      })
-      //furthest distance:dist
-      //try to calculate the approporiate scale
-      sortByDist(utils);
-      utils.forEach((util)=>{
-        resultList.append(createCard(util));
-      });
-        }, function() {
-	   });
-      } else {
-          console.log("Browser doesn't support geolocation.");
-      }
-    },
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    success: function(data){populateResults(data)},
     error: function() { alert('Failed!'); }
 });
 
@@ -87,20 +40,86 @@ const createCard = (obj)=>{
      return liTag
 }
 
+const populateResults = (data) => {
+  let buildings = data.next,//data array
+      center = [43.076592,-89.4124875], 
+      hasLocation = false,
+      dist = 0,
+      utils = []
+  //how to graph map
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14.5,
+    center: new google.maps.LatLng(43.076592, -89.4124875),
+    mapTypeId: 'roadmap'
+  });
+  // infoWindow = new google.maps.InfoWindow;
+  // Try HTML5 geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      center = [];
+      center.push(position.coords.latitude);
+      center.push(position.coords.longitude);
+      map.setCenter({lat:center[0],lng:center[1]});
+      hasLocation = true;
+      buildings.forEach((building)=>{
+        building.utilities.forEach((utility)=>{
+        if(utility.type === sValue){
+          let tDist = measureDist(center[0],center[1],building.lat,building.lng);
+          utils.push({dist:Math.round(tDist),name:building.name,description:utility.description,
+                      lat:building.lat,lng:building.lng});
+          dist = Math.max(tDist,dist);
+          //create mark and list~~~~~~~~~~
+          resultMarks.push(creatMark(building.lat,building.lng))
+          resultCoordinates.push({lat:building.lat,lng:building.lng})
+          // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        }
+      })
+  })
+  //furthest distance:dist
+  //try to calculate the approporiate scale
+  sortByDist(utils);
+  utils.forEach((util)=>{
+    resultList.append(createCard(util));
+  });
+  localStorage.setItem("resultBuildings",resultList.html())
+    }, function() {
+ });
+  } else {
+      console.log("Browser doesn't support geolocation.");
+  }
+}
+
 const showSpcItem = (obj) => {
-  resultList.empty()
+  resultList.css("display","none")
   cleanMarkers()
+  //???????????????????????
+  map.setCenter(new google.maps.LatLng(obj.lat,obj.lng))
   creatMark(obj.lat,obj.lng)
   map.setCenter({lat:obj.lat,lng:obj.lng})
-  $("#pageContainer").append('<p>' + obj.name +'</p>')
-  $("#pageContainer").append('<p>'+ "Description: " + obj.description +'</p>')
-  $("#pageContainer").append('<p>'+ "Distance: " + obj.dist + " meters" +'</p>')
-  $("#pageContainer").append('<button>Get Direction</button>')
+  specificResult.append('<p>' + obj.name +'</p>')
+  specificResult.append('<p>'+ "Description: " + obj.description +'</p>')
+  specificResult.append('<p>'+ "Distance: " + obj.dist + " meters" +'</p>')
+  specificResult.append('<button>Get Direction</button>')
+  let btn = document.createElement("button")
+  $(btn).text("Go Back")
+  $(btn).on('click',()=>{
+    specificResult.css("display","none")
+    specificResult.empty()
+    resultList.css("display","block")
+    resultMarks = []
+    resultCoordinates.forEach((coor)=>{
+      resultMarks.push(creatMark(coor.lat,coor.lng))
+      map.setZoom(14.5)
+    })
+    map.setCenter(new google.maps.LatLng(43.076592, -89.4124875))
+  })
+  specificResult.append(btn)
+  specificResult.css("display","block")
 }
 
 const cleanMarkers = () => {
-  if(cMarkers.length > 0){
-    cMarkers.forEach((cMarker)=>{
+  if(resultMarks.length > 0){
+    resultMarks.forEach((cMarker)=>{
       cMarker.setMap(null)
     })
   }
@@ -112,8 +131,8 @@ const creatMark = (lat,lng) =>{
               position: new google.maps.LatLng(lat, lng),
               icon: icons['info'].icon,
               map: map
-            });
-  cMarkers.push(marker)
+            })
+  return marker
 }
 
 const measureDist = (lat1, lng1, lat2, lng2) => {
