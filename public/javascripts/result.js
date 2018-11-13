@@ -1,6 +1,6 @@
 function initMap() {
-  var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-  var icons = {
+  let iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+  let icons = {
     info: {
       icon: iconBase + 'info-i_maps.png'
     }
@@ -8,7 +8,7 @@ function initMap() {
 
 let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
 let resultList = $("#resultList")
-let resultMarks = [] //current marker
+let currentMarks = [] //current marker
 let resultCoordinates = []
 let specificResult = $("#specificResult") 
 $.ajax({
@@ -40,6 +40,17 @@ const createCard = (obj)=>{
      return liTag
 }
 
+const getGeolocation = (callback) => {
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(function(position) {
+        callback(position.coords.latitude,position.coords.longitude)
+      })
+    }else{
+      alert("Browser doesn't support geolocation.");
+      callback(43.076592,-89.4124875)
+    }
+}
+
 const populateResults = (data) => {
   let buildings = data.next,//data array
       center = [43.076592,-89.4124875], 
@@ -50,76 +61,88 @@ const populateResults = (data) => {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14.5,
     center: new google.maps.LatLng(43.076592, -89.4124875),
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
+    disableDefaultUI: true
   });
-  // infoWindow = new google.maps.InfoWindow;
-  // Try HTML5 geolocation
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+  
+  getGeolocation((lati,longti)=>{
       center = [];
-      center.push(position.coords.latitude);
-      center.push(position.coords.longitude);
+      center.push(lati);
+      center.push(longti);
       map.setCenter({lat:center[0],lng:center[1]});
       hasLocation = true;
       buildings.forEach((building)=>{
         building.utilities.forEach((utility)=>{
-        if(utility.type === sValue){
-          let tDist = measureDist(center[0],center[1],building.lat,building.lng);
-          utils.push({dist:Math.round(tDist),name:building.name,description:utility.description,
-                      lat:building.lat,lng:building.lng});
-          dist = Math.max(tDist,dist);
-          //create mark and list~~~~~~~~~~
-          resultMarks.push(creatMark(building.lat,building.lng))
-          resultCoordinates.push({lat:building.lat,lng:building.lng})
-          // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        }
+          if(utility.type === sValue){
+            let tDist = measureDist(center[0],center[1],
+                                    building.lat,
+                                    building.lng);
+            utils.push({dist:Math.round(tDist),
+                        name:building.name,
+                        description:utility.description,
+                        lat:building.lat,
+                        lng:building.lng});
+            dist = Math.max(tDist,dist);
+            //create mark and list~~~~~~~~~~
+            creatMark(building.lat,building.lng)
+            resultCoordinates.push({lat:building.lat,lng:building.lng})
+            // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          }
+        })
       })
+    /*furthest distance:dist
+    try to calculate the approporiate scale*/
+    sortByDist(utils);
+    utils.forEach((util)=>{
+      resultList.append(createCard(util))
+    })
   })
-  //furthest distance:dist
-  //try to calculate the approporiate scale
-  sortByDist(utils);
-  utils.forEach((util)=>{
-    resultList.append(createCard(util));
-  });
-  localStorage.setItem("resultBuildings",resultList.html())
-    }, function() {
- });
-  } else {
-      console.log("Browser doesn't support geolocation.");
-  }
 }
 
 const showSpcItem = (obj) => {
   resultList.css("display","none")
-  cleanMarkers()
-  //???????????????????????
-  map.setCenter(new google.maps.LatLng(obj.lat,obj.lng))
+  removeCurrentMarks()
   creatMark(obj.lat,obj.lng)
   map.setCenter({lat:obj.lat,lng:obj.lng})
+  map.setZoom(16)
   specificResult.append('<p>' + obj.name +'</p>')
   specificResult.append('<p>'+ "Description: " + obj.description +'</p>')
   specificResult.append('<p>'+ "Distance: " + obj.dist + " meters" +'</p>')
-  specificResult.append('<button>Get Direction</button>')
-  let btn = document.createElement("button")
-  $(btn).text("Go Back")
-  $(btn).on('click',()=>{
+  let GBBtn     = document.createElement("button"),
+      directBtn = document.createElement("button")
+  $(GBBtn).text("Go Back")
+  $(GBBtn).on('click',()=>{
     specificResult.css("display","none")
     specificResult.empty()
     resultList.css("display","block")
-    resultMarks = []
+    removeCurrentMarks()
+    currentMarks = []
     resultCoordinates.forEach((coor)=>{
-      resultMarks.push(creatMark(coor.lat,coor.lng))
-      map.setZoom(14.5)
+      creatMark(coor.lat,coor.lng)
     })
-    map.setCenter(new google.maps.LatLng(43.076592, -89.4124875))
+    //center problem
+    getGeolocation((lat,lng)=>{
+      map.setCenter({lat:obj.lat,lng:obj.lng})  
+    })
+    map.setZoom(14.5)
   })
-  specificResult.append(btn)
+
+  $(directBtn).text("show direction")
+  $(directBtn).on('click',()=>{
+    getGeolocation((lat,lng)=>{
+      window.open("http://maps.apple.com/?saddr="+lat+","+lng+
+        "&daddr="+obj.lat+","+obj.lng+"&dirflg=w")
+    })
+  })
+
+  specificResult.append(GBBtn)
+  specificResult.append(directBtn)
   specificResult.css("display","block")
 }
 
-const cleanMarkers = () => {
-  if(resultMarks.length > 0){
-    resultMarks.forEach((cMarker)=>{
+const removeCurrentMarks = () => {
+  if(currentMarks.length > 0){
+    currentMarks.forEach((cMarker)=>{
       cMarker.setMap(null)
     })
   }
@@ -132,37 +155,37 @@ const creatMark = (lat,lng) =>{
               icon: icons['info'].icon,
               map: map
             })
-  return marker
+  currentMarks.push(marker)
 }
 
 const measureDist = (lat1, lng1, lat2, lng2) => {
-  var R = 6378.137; 
-  var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
-  var dLng = lng2 * Math.PI / 180 - lng1 * Math.PI / 180;
-  var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+  let R = 6378.137; 
+  let dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
+  let dLng = lng2 * Math.PI / 180 - lng1 * Math.PI / 180;
+  let a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
   Math.sin(dLng/2) * Math.sin(dLng/2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var d = R * c;
+  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  let d = R * c;
   return d * 1000; 
 }
 
 const sortByDist = (list) => {
   //insertion sort
-  for(var i=1;i<list.length;i++){
-    var j = i-1;
-    while(j>-1&&list[j].dist>=list[j+1].dist){
-      var temp = list[j];
-      list[j]=list[j+1];
-      list[j+1]=temp;
-      j--;
+  for(let i=1;i<list.length;i++){
+    let j = i-1;
+      while(j>-1&&list[j].dist>=list[j+1].dist){
+        let temp = list[j];
+        list[j]=list[j+1];
+        list[j+1]=temp;
+        j--;
+      }
     }
   }
-}
 
-function getMapSize(){
-  var container = document.getElementById('map');
-  var width = container.offsetWidth;
-  var height = container.offsetHeight;
-  return {w:width,h:height};
-}
+  function getMapSize(){
+    let container = document.getElementById('map');
+    let width = container.offsetWidth;
+    let height = container.offsetHeight;
+    return {w:width,h:height};
+  }
 }

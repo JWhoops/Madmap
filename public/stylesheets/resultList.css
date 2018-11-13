@@ -2,16 +2,20 @@
 #map {
   height: 40%;
   width: 100%;
-  display: inline-block;
+
 }
 /*body width*/
 body{
   width: 100%;
+  text-align: center;
 }
 
 /*container*/
 #pageContainer{
   height: 100%;
+  width: 100%;
+  max-width: 600px;
+  display: inline-block;
 }
 
 /*result list container*/
