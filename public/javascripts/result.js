@@ -1,4 +1,4 @@
-function initMap() {
+function initMap(){
   let iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
   let icons = {
     info: {
@@ -9,8 +9,8 @@ function initMap() {
 let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
 let resultList = $("#resultList")
 let currentMarks = [] //current marker
-let resultCoordinates = []
-let specificResult = $("#specificResult") 
+let resultCoordinates = []//record all found result coordinates
+let bounds = new google.maps.LatLngBounds()//record bounds 
 $.ajax({
     url: 'https://angrymap.herokuapp.com/USWISCUWMAD',
     type: 'GET',
@@ -43,7 +43,22 @@ const createCard = (obj)=>{
 const getGeolocation = (callback) => {
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position) {
-        callback(position.coords.latitude,position.coords.longitude)
+          callback(position.coords.latitude,position.coords.longitude)
+      },function(err){
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+             alert("You denied the request for Geolocation.")
+              break;
+          case error.POSITION_UNAVAILABLE:
+              alert("Location information is unavailable.")
+              break;
+          case error.TIMEOUT:
+              alert("The request to get user location timed out.")
+              break;
+          case error.UNKNOWN_ERROR:
+              alert("An unknown error occurred.")
+              break;
+        }
       })
     }else{
       alert("Browser doesn't support geolocation.");
@@ -66,6 +81,7 @@ const populateResults = (data) => {
   });
   
   getGeolocation((lati,longti)=>{
+      let mark//used to store mark
       center = [];
       center.push(lati);
       center.push(longti);
@@ -84,12 +100,14 @@ const populateResults = (data) => {
                         lng:building.lng});
             dist = Math.max(tDist,dist);
             //create mark and list~~~~~~~~~~
-            creatMark(building.lat,building.lng)
+            mark = creatMark(building.lat,building.lng)
             resultCoordinates.push({lat:building.lat,lng:building.lng})
             // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            bounds.extend(mark.getPosition());//add mark to bound
           }
         })
       })
+    map.fitBounds(bounds);//set final bounds
     /*furthest distance:dist
     try to calculate the approporiate scale*/
     sortByDist(utils);
@@ -99,45 +117,39 @@ const populateResults = (data) => {
   })
 }
 
+//show specific ite
 const showSpcItem = (obj) => {
-  resultList.css("display","none")
+  let detailContainer = $("#detailContainer")
+  resultList.css("display","none")//hide result list
   removeCurrentMarks()
   creatMark(obj.lat,obj.lng)
   map.setCenter({lat:obj.lat,lng:obj.lng})
   map.setZoom(16)
-  specificResult.append('<p>' + obj.name +'</p>')
-  specificResult.append('<p>'+ "Description: " + obj.description +'</p>')
-  specificResult.append('<p>'+ "Distance: " + obj.dist + " meters" +'</p>')
-  let GBBtn     = document.createElement("button"),
-      directBtn = document.createElement("button")
-  $(GBBtn).text("Go Back")
-  $(GBBtn).on('click',()=>{
-    specificResult.css("display","none")
-    specificResult.empty()
+  //set information for specific item
+  $("#buildingName").text(obj.name)
+  $("#buildingDes").text(obj.description)
+  $("#buildingDis").text(obj.dist)
+  //go back button
+  $("#GBbtn").on('click',()=>{
+    detailContainer.css("display","none")
     resultList.css("display","block")
+    //remove all current marks
     removeCurrentMarks()
     currentMarks = []
+    //populate the marks again
     resultCoordinates.forEach((coor)=>{
       creatMark(coor.lat,coor.lng)
     })
-    //center problem
-    getGeolocation((lat,lng)=>{
-      map.setCenter({lat:obj.lat,lng:obj.lng})  
-    })
-    map.setZoom(14.5)
+    map.fitBounds(bounds)//use old bounds
   })
-
-  $(directBtn).text("show direction")
-  $(directBtn).on('click',()=>{
+  //direction button
+  $("#directionBtn").on('click',()=>{
     getGeolocation((lat,lng)=>{
       window.open("http://maps.apple.com/?saddr="+lat+","+lng+
         "&daddr="+obj.lat+","+obj.lng+"&dirflg=w")
     })
   })
-
-  specificResult.append(GBBtn)
-  specificResult.append(directBtn)
-  specificResult.css("display","block")
+  detailContainer.css("display","block")
 }
 
 const removeCurrentMarks = () => {
@@ -156,6 +168,7 @@ const creatMark = (lat,lng) =>{
               map: map
             })
   currentMarks.push(marker)
+  return marker
 }
 
 const measureDist = (lat1, lng1, lat2, lng2) => {
@@ -182,7 +195,7 @@ const sortByDist = (list) => {
     }
   }
 
-  function getMapSize(){
+  const getMapSize=()=>{
     let container = document.getElementById('map');
     let width = container.offsetWidth;
     let height = container.offsetHeight;
