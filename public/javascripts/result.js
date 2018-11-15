@@ -12,7 +12,7 @@ let currentMarks = [] //current marker
 let resultCoordinates = []
 let specificResult = $("#specificResult") 
 $.ajax({
-    url: 'http://localhost:8080/USWISCUWMAD',
+    url: 'https://angrymap.herokuapp.com/USWISCUWMAD',
     type: 'GET',
     crossDomain: true,
     dataType: 'jsonp',
