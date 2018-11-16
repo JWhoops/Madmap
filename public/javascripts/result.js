@@ -45,24 +45,27 @@ const getGeolocation = (callback) => {
       navigator.geolocation.getCurrentPosition(function(position) {
           callback(position.coords.latitude,position.coords.longitude)
       },function(err){
-        switch(error.code) {
-          case error.PERMISSION_DENIED:
-             alert("You denied the request for Geolocation.")
+        switch(err.code) {
+          case err.PERMISSION_DENIED:
+             alert("You denied the request for Geolocation," + 
+              "please allow us to get your location")
               break;
-          case error.POSITION_UNAVAILABLE:
+          case err.POSITION_UNAVAILABLE:
               alert("Location information is unavailable.")
               break;
-          case error.TIMEOUT:
+          case err.TIMEOUT:
               alert("The request to get user location timed out.")
               break;
-          case error.UNKNOWN_ERROR:
+          case err.UNKNOWN_ERROR:
               alert("An unknown error occurred.")
               break;
         }
+        callback(43.076592,-89.4124875)
       })
     }else{
       alert("Browser doesn't support geolocation.");
       callback(43.076592,-89.4124875)
+      alert("Assume your position is at the center of the campus")
     }
 }
 
@@ -117,21 +120,9 @@ const populateResults = (data) => {
   })
 }
 
-//show specific ite
-const showSpcItem = (obj) => {
-  let detailContainer = $("#detailContainer")
-  resultList.css("display","none")//hide result list
-  removeCurrentMarks()
-  creatMark(obj.lat,obj.lng)
-  map.setCenter({lat:obj.lat,lng:obj.lng})
-  map.setZoom(16)
-  //set information for specific item
-  $("#buildingName").text(obj.name)
-  $("#buildingDes").text(obj.description)
-  $("#buildingDis").text(obj.dist)
-  //go back button
+//go back button initialize
   $("#GBbtn").on('click',()=>{
-    detailContainer.css("display","none")
+    $("#detailContainer").css("display","none")
     resultList.css("display","block")
     //remove all current marks
     removeCurrentMarks()
@@ -141,7 +132,20 @@ const showSpcItem = (obj) => {
       creatMark(coor.lat,coor.lng)
     })
     map.fitBounds(bounds)//use old bounds
+    $("#directionBtn").off()
   })
+
+//show specific ite
+const showSpcItem = (obj) => {
+  resultList.css("display","none")//hide result list
+  removeCurrentMarks()
+  creatMark(obj.lat,obj.lng)
+  map.setCenter({lat:obj.lat,lng:obj.lng})
+  map.setZoom(16)
+  //set information for specific item
+  $("#buildingName").text(obj.name)
+  $("#buildingDes").text(obj.description)
+  $("#buildingDis").text(obj.dist)
   //direction button
   $("#directionBtn").on('click',()=>{
     getGeolocation((lat,lng)=>{
@@ -149,7 +153,7 @@ const showSpcItem = (obj) => {
         "&daddr="+obj.lat+","+obj.lng+"&dirflg=w")
     })
   })
-  detailContainer.css("display","block")
+  $("#detailContainer").css("display","block")
 }
 
 const removeCurrentMarks = () => {
