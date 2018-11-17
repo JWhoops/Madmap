@@ -27,7 +27,7 @@ const createCard = (obj)=>{
      desTag = document.createElement("label"),
      disTag = document.createElement("p") 
      $(hTag).text(obj.name)
-     $(imgTag).attr(obj.image)
+     $(imgTag).attr("src",obj.image)
      $(disTag).text("Distance: " + obj.dist + " meters")
      $(desTag).text("description: " + obj.description)
      liTag.append(imgTag)
