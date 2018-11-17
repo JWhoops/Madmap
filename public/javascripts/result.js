@@ -27,7 +27,7 @@ const createCard = (obj)=>{
      desTag = document.createElement("label"),
      disTag = document.createElement("p") 
      $(hTag).text(obj.name)
-     $(imgTag).attr("src","https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/bascom-hall-todd-klassy.jpg")
+     $(imgTag).attr(obj.image)
      $(disTag).text("Distance: " + obj.dist + " meters")
      $(desTag).text("description: " + obj.description)
      liTag.append(imgTag)
@@ -100,7 +100,8 @@ const populateResults = (data) => {
                         name:building.name,
                         description:utility.description,
                         lat:building.lat,
-                        lng:building.lng});
+                        lng:building.lng,
+                        image:building.image});
             dist = Math.max(tDist,dist);
             //create mark and list~~~~~~~~~~
             mark = creatMark(building.lat,building.lng)
@@ -110,10 +111,10 @@ const populateResults = (data) => {
           }
         })
       })
-    map.fitBounds(bounds);//set final bounds
+    map.fitBounds(bounds)//set final bounds
     /*furthest distance:dist
     try to calculate the approporiate scale*/
-    sortByDist(utils);
+    sortByDist(utils)
     utils.forEach((util)=>{
       resultList.append(createCard(util))
     })
