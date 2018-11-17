@@ -21,6 +21,7 @@ $.ajax({
 });
 
 const createCard = (obj)=>{
+  console.log(obj.image)
  let liTag = document.createElement("li"),
      imgTag = document.createElement("img"),
      hTag = document.createElement("h3"),
