@@ -8,17 +8,29 @@ body{
   top:20%;
   left:50%;
   transform:translate(-50%,-50%);
-  color:#e74c3c;
-  font-style: dense;
-  font-size: 70px;
+  color:#2C3A47;
+  font-style: oblique;
+  font-size: 50px;
   z-index: 500;
 }
-.title h1{
-
+.search-box{
+  padding:10px;
 }
+
+.school-name{
+  position: absolute;
+  top:35%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  color:#eb3b5a;
+  font-style: dense;
+  font-size: 30px;
+  z-index: 500;
+}
+
 .middle{
   position:absolute;
-  top:45%;
+  top:60%;
   transform:translateY(-50%);
   width:100%;
   text-align:center;
@@ -28,7 +40,6 @@ body{
   width: 90px;
   height: 90px;
   display: inline-block;
-  background:#f1f1f1;
   margin:10px;
   overflow: hidden;
   position:relative;
@@ -37,26 +48,24 @@ body{
   font-size: 40px;
   border-radius: 50%;
   box-shadow: 0 5px 15px -5px #00000070;
-  color: #e67e22;
   font-weight: lighter;
 }
-.btn i{
+.btn{
   line-height:90px;
   font-size:60px;
   transition: 0.2s linear;
   font-weight: lighter;
 }
-.btn:hover i{
+.btn:hover{
   transform: scale(1.3);
-  color:#f1f1f1;
 }
+
 .btn::before{
   content:"";
   position:absolute;
   width:120%;
   height:120%;
-  background:#e67e22;
-  transform:rotate(45deg);
+  transform:rotate(45deg));
   left:-110%;
   top:90%;
 }
@@ -65,6 +74,41 @@ body{
   top: -10%;
   left:-10%;
 }
+
+
+.button{
+  background-color:white;
+  border: none;
+  color: #eb3b5a;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  transition: 0.2s linear;
+}
+
+.button:hover{
+  transform: scale(1.3);
+  background-color: :#fa8231;
+}
+.botton::before{
+  content:"";
+  position:absolute;
+  width:120%;
+  height:120%;
+  background:#fa8231;
+  transform:rotate(45deg));
+  left:-110%;
+  top:90%;
+}
+.botton:hover::before{
+  animation:frame 0.7s 1;
+  top: -10%;
+  left:-10%;
+}
+
+
 @@keyframes frame {
   0%{
     left:-110%;
