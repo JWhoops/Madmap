@@ -34,7 +34,7 @@ document.getElementById("feedbackBtn").addEventListener("click", ()=>{
     //evening
     }else{
     	gLbl.innerHTML = "Good Evening,"
-    	document.body.style.backgroundImage = "url('./public/resources/evening.jpg')";   
+    	document.body.style.backgroundImage = "url('./public/resources/evening.jpg')";
     }
     document.body.style.backgroundSize = "cover"//stretch the background image
 })()

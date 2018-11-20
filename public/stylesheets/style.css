@@ -22,7 +22,7 @@ body{
   top:35%;
   left:50%;
   transform:translate(-50%,-50%);
-  color:#eb3b5a;
+  color:#e74c3c;
   font-style: dense;
   font-size: 30px;
   z-index: 500;
@@ -35,6 +35,7 @@ body{
   width:100%;
   text-align:center;
   z-index: 1500;
+  
 }
 .btn{
   width: 90px;
@@ -49,12 +50,11 @@ body{
   border-radius: 50%;
   box-shadow: 0 5px 15px -5px #00000070;
   font-weight: lighter;
-}
-.btn{
   line-height:90px;
   font-size:60px;
   transition: 0.2s linear;
   font-weight: lighter;
+
 }
 .btn:hover{
   transform: scale(1.3);
@@ -82,7 +82,7 @@ body{
 .button{
   background-color: Transparent;
   border: none;
-  color: #eb3b5a;
+  color: #e74c3c;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
@@ -93,14 +93,14 @@ body{
 
 .button:hover{
   transform: scale(1.3);
-  background-color: :#fa8231;
+  background-color: :white;
 }
 .botton::before{
   content:"";
   position:absolute;
   width:120%;
   height:120%;
-  background:#fa8231;
+  background:white;
   transform:rotate(45deg));
   left:-110%;
   top:90%;
