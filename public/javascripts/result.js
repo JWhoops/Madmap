@@ -29,7 +29,7 @@ const createCard = (obj)=>{
      disTag = document.createElement("span") 
      $(hTag).text(obj.name)
      $(imgTag).attr("src",obj.bImage)
-     $(disTag).text(Math.round(obj.dist*0.000621371*100)/100  + " miles from me")
+     $(disTag).text(obj.dist  + " miles from me")
      if(obj.description.length > 20)
       $(desTag).text(obj.description.substring(0,30) + "...")
      else
@@ -98,7 +98,7 @@ const populateResults = (data) => {
             let tDist = measureDist(center[0],center[1],
                                     building.lat,
                                     building.lng)
-            utils.push({dist:Math.round(tDist),
+            utils.push({dist:Math.round(tDist*0.000621371*100)/100,
                         name:building.name,
                         description:utility.description,
                         lat:building.lat,
@@ -132,7 +132,7 @@ const populateResults = (data) => {
     if(c=='none' || c == ""){
       window.location.href = "../index.html"
     }else{
-      $("#detail-container").fadeOut("slow")
+      $("#detail-container").fadeOut("fast")
       resultList.fadeIn("fast")
       //remove all current marks
       removeCurrentMarks()
@@ -158,7 +158,7 @@ const showSpcItem = (obj) => {
   //set information for specific item
   $("#buildingName").text(obj.type+ " in " +obj.name)
   $("#buildingDes").text(obj.description)
-  $("#buildingDis").text(obj.dist + " meters")
+  $("#buildingDis").text(obj.dist + " miles")
   $("#utilityIMG").attr('src',obj.uImage)
   //direction button
   $("#directionBtn").on('click',()=>{

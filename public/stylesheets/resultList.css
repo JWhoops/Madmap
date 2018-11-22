@@ -64,6 +64,7 @@ li img {
   width: 150px;
   height: 100px;
   float: right;
+  margin: 1px;
 }
  
 li {
@@ -75,9 +76,6 @@ li {
   border-radius: 3px;
 }
 
-li label{
-  font-size: 0.9em;
-}
  
 li:hover {
   background: #c5050c;
@@ -103,6 +101,14 @@ li:hover {
 #buildingName{
     margin-top: -3px;
     line-height: 1;
+}
+
+#buildingDes{
+  white-space: pre-wrap; /* css-3 */    
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */    
+  white-space: -o-pre-wrap; /* Opera 7 */    
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
 #utilityIMG{
