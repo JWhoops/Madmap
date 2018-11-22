@@ -21,8 +21,8 @@ body{
   background: transparent;
 }
 
-#back-btn img{
-  width: 30px;
+.icon{
+  width: 35px;
 }
 
 /*map*/
@@ -131,9 +131,11 @@ li:hover {
 }
 
 #showIMG{
+  border-style: none;
+  background: transparent;
   position: absolute;
   right: 3%;
-  top: 2.5%;
+  top: 3%;
 }
 
 #directionBtn{
