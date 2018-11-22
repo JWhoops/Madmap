@@ -130,10 +130,10 @@ const populateResults = (data) => {
     //check display property to decide go back btn
     let c = document.querySelector('#detail-container').style.display
     if(c=='none' || c == ""){
-      window.history.back()
+      window.location.href = "../index.html"
     }else{
       $("#detail-container").fadeOut("slow")
-      resultList.css("display","block")
+      resultList.fadeIn("fast")
       //remove all current marks
       removeCurrentMarks()
       currentMarks = []
@@ -141,15 +141,16 @@ const populateResults = (data) => {
       resultCoordinates.forEach((coor)=>{
         creatMark(coor.lat,coor.lng)
       })
-      map.fitBounds(bounds)//use old bounds
       $("#directionBtn").off()
+      $('#showIMG').off()
       $("#map").css("height","40%")
+      map.fitBounds(bounds)//use old bounds
     }
   })
 
 //show specific ite
 const showSpcItem = (obj) => {
-  resultList.css("display","none")//hide result list
+  resultList.fadeOut("fast")//hide result list
   removeCurrentMarks()
   creatMark(obj.lat,obj.lng)
   map.setCenter({lat:obj.lat,lng:obj.lng})
@@ -169,31 +170,17 @@ const showSpcItem = (obj) => {
   //hold to show button
   let img = $("#utilityIMG")
   let showBtn = $('#showIMG')
+  showBtn.text("Show Photo")
+  img.css("display","none")
   showBtn.on('click',()=>{
     if(showBtn.text() == 'Show Photo'){
-      img.fadeIn('slow')
+      img.fadeIn('fast')
       showBtn.text('Show Map')
     }else{
-      img.fadeOut('slow')
+      img.fadeOut('fast')
       showBtn.text('Show Photo')
     }
   })
-  // $('#showIMG').on('mousedown mouseup', function mouseState(e) {
-  //   if (e.type == "mousedown") {
-  //     img.css('display','block')
-  //   }else{
-  //     img.css('display','none')
-  //   }
-  // })
-
-  // //for mobile
-  // let showBtn = document.querySelector("#showIMG")
-  // showBtn.addEventListener('touchstart',()=>{
-  //   img.css('display','block')
-  // })
-  // showBtn.addEventListener('touchend',()=>{
-  //    img.css('display','none')
-  // })
   $("#map").css("height","60%")
   $("#detail-container").fadeIn("slow")
 }

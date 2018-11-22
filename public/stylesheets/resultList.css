@@ -29,8 +29,8 @@ body{
 #map {
   height: 40%;
   width: 100%;
-  -webkit-transition: height 0.8s; /* Safari */
-  transition: height 0.8s;
+  -webkit-transition: height 0.5s; /* Safari */
+  transition: height 0.5s;
   position: fixed;
   top: 0;
 }
