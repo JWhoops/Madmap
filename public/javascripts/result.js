@@ -17,19 +17,21 @@ $.ajax({
     crossDomain: true,
     dataType: 'jsonp',
     success: function(data){populateResults(data)},
-    error: function() { alert('Failed!'); }
+    error: function() { alert('Failed!') }
 });
 
 const createCard = (obj)=>{
-  console.log(obj.image)
  let liTag = document.createElement("li"),
      imgTag = document.createElement("img"),
      hTag = document.createElement("h3"),
      desTag = document.createElement("label"),
      disTag = document.createElement("p") 
      $(hTag).text(obj.name)
-     $(imgTag).attr("src",obj.image)
+     $(imgTag).attr("src",obj.bImage)
      $(disTag).text("Distance: " + obj.dist + " meters")
+     if(obj.description.length > 20)
+      $(desTag).text("description: " + obj.description.substring(0,20) + "...")
+     else
      $(desTag).text("description: " + obj.description)
      liTag.append(imgTag)
      liTag.append(hTag)
@@ -89,21 +91,23 @@ const populateResults = (data) => {
       center = [];
       center.push(lati);
       center.push(longti);
-      map.setCenter({lat:center[0],lng:center[1]});
+      map.setCenter({lat:center[0],lng:center[1]})
       hasLocation = true;
       buildings.forEach((building)=>{
         building.utilities.forEach((utility)=>{
           if(utility.type === sValue){
             let tDist = measureDist(center[0],center[1],
                                     building.lat,
-                                    building.lng);
+                                    building.lng)
             utils.push({dist:Math.round(tDist),
                         name:building.name,
                         description:utility.description,
                         lat:building.lat,
                         lng:building.lng,
-                        image:building.image});
-            dist = Math.max(tDist,dist);
+                        bImage:building.image,
+                        uImage:utility.image,
+                        type:utility.type})
+            dist = Math.max(tDist,dist)
             //create mark and list~~~~~~~~~~
             mark = creatMark(building.lat,building.lng)
             resultCoordinates.push({lat:building.lat,lng:building.lng})
@@ -123,18 +127,23 @@ const populateResults = (data) => {
 }
 
 //go back button initialize
-  $("#GBbtn").on('click',()=>{
-    $("#detailContainer").css("display","none")
-    resultList.css("display","block")
-    //remove all current marks
-    removeCurrentMarks()
-    currentMarks = []
-    //populate the marks again
-    resultCoordinates.forEach((coor)=>{
-      creatMark(coor.lat,coor.lng)
-    })
-    map.fitBounds(bounds)//use old bounds
-    $("#directionBtn").off()
+  $("#back-btn").on('click',()=>{
+    if(document.querySelector('#detail-container').style.display=='none'){
+      window.history.back()
+    }else{
+      $("#detail-container").css("display","none")
+      resultList.css("display","block")
+      //remove all current marks
+      removeCurrentMarks()
+      currentMarks = []
+      //populate the marks again
+      resultCoordinates.forEach((coor)=>{
+        creatMark(coor.lat,coor.lng)
+      })
+      map.fitBounds(bounds)//use old bounds
+      $("#directionBtn").off()
+      $("#map").css("height","40%")
+    }
   })
 
 //show specific ite
@@ -145,9 +154,10 @@ const showSpcItem = (obj) => {
   map.setCenter({lat:obj.lat,lng:obj.lng})
   map.setZoom(16)
   //set information for specific item
-  $("#buildingName").text(obj.name)
+  $("#buildingName").text(obj.type+ " in " +obj.name)
   $("#buildingDes").text(obj.description)
-  $("#buildingDis").text(obj.dist)
+  $("#buildingDis").text(obj.dist + " meters")
+  $("#utilityIMG").attr('src',obj.uImage)
   //direction button
   $("#directionBtn").on('click',()=>{
     getGeolocation((lat,lng)=>{
@@ -155,7 +165,18 @@ const showSpcItem = (obj) => {
         "&daddr="+obj.lat+","+obj.lng+"&dirflg=w")
     })
   })
-  $("#detailContainer").css("display","block")
+  //hold to show button
+  $('#showIMG').on('mousedown mouseup', function mouseState(e) {
+    let img = $("#utilityIMG")
+    if (e.type == "mousedown") {
+      img.css('display','block')
+    }else{
+      img.css('display','none')
+    }
+  })
+
+  $("#map").css("height","60%")
+  $("#detail-container").css("display","block")
 }
 
 const removeCurrentMarks = () => {
