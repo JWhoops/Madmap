@@ -168,21 +168,32 @@ const showSpcItem = (obj) => {
   })
   //hold to show button
   let img = $("#utilityIMG")
-  $('#showIMG').on('mousedown mouseup', function mouseState(e) {
-    if (e.type == "mousedown") {
-      img.css('display','block')
+  let showBtn = $('#showIMG')
+  showBtn.on('click',()=>{
+    if(showBtn.text() == 'Show Photo'){
+      img.fadeIn('slow')
+      showBtn.text('Show Map')
     }else{
-      img.css('display','none')
+      img.fadeOut('slow')
+      showBtn.text('Show Photo')
     }
   })
-  //for mobile
-  let showBtn = document.querySelector("#showIMG")
-  showBtn.addEventListener('touchstart',()=>{
-    img.css('display','block')
-  })
-  showBtn.addEventListener('touchend',()=>{
-     img.css('display','none')
-  })
+  // $('#showIMG').on('mousedown mouseup', function mouseState(e) {
+  //   if (e.type == "mousedown") {
+  //     img.css('display','block')
+  //   }else{
+  //     img.css('display','none')
+  //   }
+  // })
+
+  // //for mobile
+  // let showBtn = document.querySelector("#showIMG")
+  // showBtn.addEventListener('touchstart',()=>{
+  //   img.css('display','block')
+  // })
+  // showBtn.addEventListener('touchend',()=>{
+  //    img.css('display','none')
+  // })
   $("#map").css("height","60%")
   $("#detail-container").fadeIn("slow")
 }

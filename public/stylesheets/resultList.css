@@ -128,18 +128,18 @@ li:hover {
   box-sizing: border-box;
   border-radius: 5px;
   font-weight: 550;
+  width: 120px;
 }
 
 #showIMG{
-  border-style: none;
-  background: transparent;
   position: absolute;
-  right: 3%;
+  right: 2%;
   top: 3%;
 }
 
 #directionBtn{
   font-size: 1.2em;
+  width: auto;
 }
 
      
