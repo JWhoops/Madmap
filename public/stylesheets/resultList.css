@@ -2,6 +2,7 @@
 body{
   width: 100%;
   text-align: center;
+  overflow: auto;
 }
 
 /*container*/
@@ -24,25 +25,38 @@ body{
   width: 30px;
 }
 
-
 /*map*/
 #map {
   height: 40%;
   width: 100%;
-  -webkit-transition: height 1.2s; /* Safari */
-  transition: height 1.2s;
+  -webkit-transition: height 0.8s; /* Safari */
+  transition: height 0.8s;
+  position: fixed;
+  top: 0;
+}
+
+/*remove google logo and terms*/
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
 }
 
 /*result list container*/
 #resultList{
+  overflow-y: scroll;
   margin-top: 5px;
   text-align: left;
   list-style-type: none;
-  width: 100%;
+  width: 102%;
+  height: 90%;
 }
- 
-h3 {
-  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+li h3{
+  margin-top: 0;
 }
  
 li img {
@@ -50,11 +64,6 @@ li img {
   width: 150px;
   height: 100px;
   float: right;
-}
- 
-li p {
-  font: 200 12px/1.5 Georgia, Times New Roman, serif;
-  overflow: hidden;
 }
  
 li {
@@ -65,9 +74,14 @@ li {
   box-shadow: 0px 0.5px;
   border-radius: 3px;
 }
+
+li label{
+  font-size: 0.9em;
+}
  
 li:hover {
-  background: #eee;
+  background: #c5050c;
+  color: white;
   cursor: pointer;
 }
 
@@ -100,11 +114,16 @@ li:hover {
   right: 0;
 }
 
+.specific-label{
+  font-size: 1.15em;
+  font-weight: 500;
+}
+
 .specific-button{
   color: white;
   background: #c5050c;
   font-size: 1em;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-style: none;
   box-sizing: border-box;
   border-radius: 5px;
@@ -115,6 +134,10 @@ li:hover {
   position: absolute;
   right: 3%;
   top: 2.5%;
+}
+
+#directionBtn{
+  font-size: 1.2em;
 }
 
      

@@ -6,11 +6,12 @@ function initMap(){
     }
   };  
 
-let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue");
-let resultList = $("#resultList")
-let currentMarks = [] //current marker
-let resultCoordinates = []//record all found result coordinates
-let bounds = new google.maps.LatLngBounds()//record bounds 
+//search value
+let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue"),
+    resultList = $("#resultList"),
+    currentMarks = [], //current marker
+    resultCoordinates = [],//record all found result coordinates
+    bounds = new google.maps.LatLngBounds()//record bounds 
 $.ajax({
     url: 'https://angrymap.herokuapp.com/USWISCUWMAD',
     type: 'GET',
@@ -24,19 +25,19 @@ const createCard = (obj)=>{
  let liTag = document.createElement("li"),
      imgTag = document.createElement("img"),
      hTag = document.createElement("h3"),
-     desTag = document.createElement("label"),
-     disTag = document.createElement("p") 
+     desTag = document.createElement("p"),
+     disTag = document.createElement("span") 
      $(hTag).text(obj.name)
      $(imgTag).attr("src",obj.bImage)
-     $(disTag).text("Distance: " + obj.dist + " meters")
+     $(disTag).text(Math.round(obj.dist*0.000621371*100)/100  + " miles from me")
      if(obj.description.length > 20)
-      $(desTag).text("description: " + obj.description.substring(0,20) + "...")
+      $(desTag).text(obj.description.substring(0,30) + "...")
      else
-     $(desTag).text("description: " + obj.description)
+     $(desTag).text(obj.description)
      liTag.append(imgTag)
      liTag.append(hTag)
-     liTag.append(disTag)
      liTag.append(desTag)
+     liTag.append(disTag)
      $(liTag).on('click',function(){
        showSpcItem(obj)
      })
@@ -80,8 +81,6 @@ const populateResults = (data) => {
       utils = []
   //how to graph map
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14.5,
-    center: new google.maps.LatLng(43.076592, -89.4124875),
     mapTypeId: 'roadmap',
     disableDefaultUI: true
   });
@@ -128,10 +127,12 @@ const populateResults = (data) => {
 
 //go back button initialize
   $("#back-btn").on('click',()=>{
-    if(document.querySelector('#detail-container').style.display=='none'){
+    //check display property to decide go back btn
+    let c = document.querySelector('#detail-container').style.display
+    if(c=='none' || c == ""){
       window.history.back()
     }else{
-      $("#detail-container").css("display","none")
+      $("#detail-container").fadeOut("slow")
       resultList.css("display","block")
       //remove all current marks
       removeCurrentMarks()
@@ -166,17 +167,24 @@ const showSpcItem = (obj) => {
     })
   })
   //hold to show button
+  let img = $("#utilityIMG")
   $('#showIMG').on('mousedown mouseup', function mouseState(e) {
-    let img = $("#utilityIMG")
     if (e.type == "mousedown") {
       img.css('display','block')
     }else{
       img.css('display','none')
     }
   })
-
+  //for mobile
+  let showBtn = document.querySelector("#showIMG")
+  showBtn.addEventListener('touchstart',()=>{
+    img.css('display','block')
+  })
+  showBtn.addEventListener('touchend',()=>{
+     img.css('display','none')
+  })
   $("#map").css("height","60%")
-  $("#detail-container").css("display","block")
+  $("#detail-container").fadeIn("slow")
 }
 
 const removeCurrentMarks = () => {
