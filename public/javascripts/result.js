@@ -5,7 +5,7 @@ function initMap(){
       icon: iconBase + 'info-i_maps.png'
     }
   };  
-
+  
 //search value
 let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue"),
     resultList = $("#resultList"),
@@ -119,9 +119,8 @@ const populateResults = (data) => {
     /*furthest distance:dist
     try to calculate the approporiate scale*/
     sortByDist(utils)
-    utils.forEach((util)=>{
-      resultList.append(createCard(util))
-    })
+    loadMoreList(utils,4,$("#load-more-btn"))
+
   })
 }
 
@@ -233,5 +232,30 @@ const sortByDist = (list) => {
     let width = container.offsetWidth;
     let height = container.offsetHeight;
     return {w:width,h:height};
+  }
+
+  const loadMoreList = (liArr,step,btn)=>{
+    let cNums = liArr.length,
+    pp = cp = step //pp=pause_point cp=current_point
+    if(cNums <= step){
+      pp = cNums
+      btn.fadeOut('fast')
+    }else{
+      btn.on('click',()=>{
+        if(pp <= cNums){
+          pp+=step
+          while(cp<pp && cp<cNums){
+            $(createCard(liArr[cp])).insertBefore(btn)
+            cp++
+          }
+        }
+        if(pp >= cNums)
+          btn.fadeOut('fast') //operation after loading all items
+      })  
+    }
+    //default load
+    for (var i = 0; i < pp; i++) {
+      $(createCard(liArr[i])).insertBefore(btn)
+    }
   }
 }

@@ -83,6 +83,23 @@ li:hover {
   cursor: pointer;
 }
 
+#load-more-btn{
+  width: 100%;
+  color: #c5050c;
+  height: 50px;
+  border-style: none;
+  background: transparent;
+  border:1px solid #c5050c;
+  box-sizing: border-box;
+  font-weight: 800;
+}
+
+#load-more-btn:hover {
+  background: #c5050c;
+  color: white;
+  cursor: pointer;
+}
+
 #detail-container{
   display: none;
   padding: 0 24px;
