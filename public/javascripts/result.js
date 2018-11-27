@@ -120,7 +120,8 @@ const populateResults = (data) => {
     try to calculate the approporiate scale*/
     sortByDist(utils)
     loadMoreList(utils,4,$("#load-more-btn"))
-
+	$("#back-btn").css("display","block")
+	$("#load-more-btn").css("display","block")
   })
 }
 

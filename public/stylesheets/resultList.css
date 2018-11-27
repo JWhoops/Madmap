@@ -13,6 +13,7 @@ body{
 }
 
 #back-btn{
+  display:none;
   border-style: none;
   position: absolute;
   top: 2%;
@@ -52,8 +53,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
   margin-top: 5px;
   text-align: left;
   list-style-type: none;
-  width: 102%;
-  height: 90%;
+  width: 101%;
 }
 li h3{
   margin-top: 0;
@@ -76,14 +76,8 @@ li {
   border-radius: 3px;
 }
 
- 
-li:hover {
-  background: #c5050c;
-  color: white;
-  cursor: pointer;
-}
-
 #load-more-btn{
+  display:none;
   width: 100%;
   color: #c5050c;
   height: 50px;
