@@ -1,129 +1,97 @@
-body{
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body{
 
 }
-.title{
+
+section{
   position: absolute;
-  top:20%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:#2C3A47;
-  font-style: oblique;
-  font-size: 50px;
-  z-index: 500;
-}
-.search-box{
-  padding:10px;
-}
-
-.school-name{
-  position: absolute;
-  top:35%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:#e74c3c;
-  font-style: dense;
-  font-size: 30px;
-  z-index: 500;
-}
-
-.middle{
-  position:absolute;
-  top:55%;
-  transform:translateY(-50%);
-  width:100%;
-  text-align:center;
-  z-index: 1500;
-  
-}
-.btn{
-  width: 90px;
-  height: 90px;
-  display: inline-block;
-  margin:10px;
-  overflow: hidden;
-  position:relative;
+  top: 20%;
+  width: 100%;
   text-align: center;
-  text-decoration: none;
-  font-size: 40px;
+}
+
+img[src="public/resources/bucky_logo.png"]{
+  height: 180px;
+  margin-bottom: -20px;
+  margin-right: -60px;
+}
+
+section h1{
+  font-size: 180px;
+  color: #c5050c;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+  font-family: 'Chakra Petch', sans-serif;
+  margin-left: -100px;
+}
+
+#icon-container{
+  margin: 0 auto;
+  margin-top:50px;
+}
+
+#icon-container button{
+  display: inline-block;
   border-radius: 50%;
-  box-shadow: 0 5px 15px 0.5px #00000070;
-  font-weight: lighter;
-  line-height:90px;
-  font-size:60px;
-  transition: 0.2s linear;
-  font-weight: lighter;
-  background: white;
-  border-style: none;
-}
-.btn:hover{
-  transform: scale(1.3);
-}
-
-#greetingLbl{
-  color: #333;
-}
-
-.btn::before{
-  content:"";
-  position:absolute;
-  width:120%;
-  height:120%;
-  transform:rotate(45deg));
-  left:-110%;
-  top:90%;
-}
-.btn:hover::before{
-  animation:frame 0.7s 1;
-  top: -10%;
-  left:-10%;
-}
-
-.button{
-  background-color: Transparent;
-  border: none;
-  color: #e74c3c;
-  padding: 15px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 26px;
-  transition: 0.2s linear;
-}
-
-.button:hover{
-  transform: scale(1.3);
-  background-color: :white;
-}
-.botton::before{
-  content:"";
-  position:absolute;
-  width:120%;
-  height:120%;
   background:white;
-  transform:rotate(45deg));
-  left:-110%;
-  top:90%;
+  padding: 30px;
+  border-style: none;
+  box-shadow: 0 5px 15px 0.5px #00000070;
+  margin:10px;
+  transition: 0.2s linear;
 }
-.botton:hover::before{
-  animation:frame 0.7s 1;
-  top: -10%;
-  left:-10%;
+#icon-container button:hover{
+  transform: scale(1.3);
 }
 
-@@keyframes frame {
-  0%{
-    left:-110%;
-    top:90%;
-  }
-  50%{
-    left:10%;
-    top:30%;
-  }
-  100%{
-    top:-10%;
-    left:-10%;
-  }
-
+#icon-container button img{
+  width: 60px;
+  height: 60px;
 }

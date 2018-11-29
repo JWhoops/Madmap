@@ -20,17 +20,17 @@ document.getElementById("feedbackBtn").addEventListener("click", ()=>{
 });
 
 //dynamic scene
-(()=>{
-	let hour = new Date().getHours(),
-		gLbl = document.getElementById("greetingLbl")
-    //morning
-    if(hour>=4 && hour<12){
-		gLbl.innerHTML = "Good Morning,"
-    //afternoon
-    }else if(hour>=12 && hour<18){
-    	gLbl.innerHTML = "Good Afternoon,"
-    //evening
-    }else{
-    	gLbl.innerHTML = "Good Evening,"
-    }
-})()
+// (()=>{
+// 	let hour = new Date().getHours(),
+// 		gLbl = document.getElementById("greetingLbl")
+//     //morning
+//     if(hour>=4 && hour<12){
+// 		gLbl.innerHTML = "Good Morning,"
+//     //afternoon
+//     }else if(hour>=12 && hour<18){
+//     	gLbl.innerHTML = "Good Afternoon,"
+//     //evening
+//     }else{
+//     	gLbl.innerHTML = "Good Evening,"
+//     }
+// })()
