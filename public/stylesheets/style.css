@@ -2,7 +2,6 @@ body {
   background: url("../resources/campus_skyline_dusk14_8612-min.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
   height: 100vh;
 }
 
@@ -129,6 +128,7 @@ body {
 @media only screen and (max-width: 576px) {
   body {
     height: 100vh !important;
+    background-position: 50% 50%;
   }
 
   #title:after {
@@ -150,5 +150,6 @@ body {
 @media only screen and (min-width: 577px) and (max-width: 768px) {
   body {
     height: 115vh !important;
+    background-position: 50% 50%;
   }
 }
