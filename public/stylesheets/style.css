@@ -1,97 +1,143 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
 body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+  background: url("../resources/campus_skyline_dusk14_8612-min.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 130vh;
 }
 
-body{
-
-}
-
-section{
+.content {
   position: absolute;
-  top: 20%;
+  top: 10%;
   width: 100%;
   text-align: center;
 }
 
-img[src="public/resources/bucky_logo.png"]{
-  height: 180px;
-  margin-bottom: -20px;
-  margin-right: -60px;
-}
-
-section h1{
-  font-size: 180px;
-  color: #c5050c;
-  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
-  font-family: 'Chakra Petch', sans-serif;
-  margin-left: -100px;
-}
-
-#icon-container{
-  margin: 0 auto;
-  margin-top:50px;
-}
-
-#icon-container button{
+#title {
+  font-weight: bold;
+  text-shadow: 1px 1px grey;
   display: inline-block;
-  border-radius: 50%;
-  background:white;
-  padding: 30px;
-  border-style: none;
-  box-shadow: 0 5px 15px 0.5px #00000070;
-  margin:10px;
-  transition: 0.2s linear;
-}
-#icon-container button:hover{
-  transform: scale(1.3);
+  font-size: 4em;
+  color: #c5050c;
+  font-family: "Chakra Petch", sans-serif;
 }
 
-#icon-container button img{
-  width: 60px;
-  height: 60px;
+.main-container {
+  background: rgba(237, 237, 237, 0);
+  background: -moz-linear-gradient(
+    left,
+    rgba(237, 237, 237, 0) 0%,
+    rgba(246, 246, 246, 0.53) 53%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(237, 237, 237, 0)),
+    color-stop(53%, rgba(246, 246, 246, 0.53)),
+    color-stop(100%, rgba(237, 237, 237, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(237, 237, 237, 0) 0%,
+    rgba(246, 246, 246, 0.53) 53%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(237, 237, 237, 0) 0%,
+    rgba(246, 246, 246, 0.53) 53%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(237, 237, 237, 0) 0%,
+    rgba(246, 246, 246, 0.53) 53%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(237, 237, 237, 0) 0%,
+    rgba(246, 246, 246, 0.53) 53%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ededed', GradientType=1 );
+}
+
+.main-container > * {
+  margin: 1%;
+}
+
+.btn {
+  display: inline-block;
+  background: transparent;
+  border-style: none;
+  transition: 0.2s ease;
+  border: 1px solid #c5050c;
+  border-radius: 5%;
+}
+
+.btn:hover {
+  background-color: white;
+  border: 1px dashed #c5050c;
+  transform: scale(1.1);
+}
+
+.btn img {
+  width: 90px;
+  height: 90px;
+}
+
+@media only screen and (max-width: 768px) {
+  #title {
+    visibility: hidden;
+    word-spacing: -999px;
+    letter-spacing: -999px;
+  }
+
+  #title:after {
+    content: "MadMap";
+    position: relative;
+    top: -0.5em;
+    visibility: visible;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+
+  .content {
+    top: 0;
+  }
+
+  .btn {
+    border: 2px solid #c5050c;
+    margin-top: 2%;
+    padding: 2%;
+  }
+
+  .btn img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .btn:hover {
+    background-color: white;
+    border: 2px dashed #c5050c;
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  body{
+    height: 120vh;;
+  }
+  
+  #title:after {
+    content: "MadMap";
+    position: relative;
+    font-size: 0.8em;
+    top: -1em;
+    visibility: visible;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
 }

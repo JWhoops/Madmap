@@ -4,8 +4,8 @@ function initMap(){
     info: {
       icon: iconBase + 'info-i_maps.png'
     }
-  };  
-  
+  };   
+
 //search value
 let sValue = new URLSearchParams(document.location.search.substring(1)).get("sValue"),
     resultList = $("#resultList"),

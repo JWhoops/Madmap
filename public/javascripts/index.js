@@ -1,4 +1,8 @@
 //add listerner for buttons
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 	
+}
+
 document.getElementById("printerBtn").addEventListener("click", ()=>{
 	window.location.href = "./views/result.html?sValue=Printer";
 });
@@ -18,6 +22,7 @@ document.getElementById("nappingBtn").addEventListener("click", ()=>{
 document.getElementById("feedbackBtn").addEventListener("click", ()=>{
 	alert("still developing")
 });
+
 
 //dynamic scene
 // (()=>{
