@@ -3,6 +3,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  background-position: 60% 0%;
 }
 
 .content {
@@ -78,7 +79,7 @@ body {
 
 .btn:hover {
   background-color: white;
-  border: 1px dashed #c5050c;
+  border: 5px solid #c5050c;
   transform: scale(1.1);
 }
 
@@ -120,14 +121,14 @@ body {
 
   .btn:hover {
     background-color: white;
-    border: 2px dashed #c5050c;
+    border: 1px dashed #c5050c;
     transform: none;
   }
 }
 
 @media only screen and (max-width: 576px) {
   body {
-    height: 100vh !important;
+    min-height: 550px !important;
     background-position: 50% 50%;
   }
 
@@ -141,15 +142,36 @@ body {
     letter-spacing: normal;
   }
 
-  .main-container {
-    padding-left: 1%;
-    padding-right: 1%;
+  #title {
+    height: 1.6em;
+    font-size: 4em;
+  }
+
+  .btn {
+    border: none;
+    border-top: 1px solid #c5050c;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    height: 105px;
   }
 }
 
-@media only screen and (min-width: 577px) and (max-width: 768px) {
+@media only screen and (min-width: 577px) and (max-width: 767.5px) {
   body {
-    height: 115vh !important;
-    background-position: 50% 50%;
+    min-height: 670px !important;
+    background-position: 60%;
+  }
+
+  .btn {
+    border: none;
+    border-top: 2px solid #c5050c;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  .btn img {
+    width: 70px;
+    height: 70px;
   }
 }

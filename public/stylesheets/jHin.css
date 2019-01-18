@@ -129,9 +129,6 @@ table {
   border-spacing: 0;
 }
 
-* {
-  outline: 1px solid goldenrod;
-}
 
 .container {
   margin: 0 1% 0 1%;
@@ -147,217 +144,217 @@ table {
 [class*="grill-col-lg"],
 [class*="grill-col-xl"] {
   -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
+      flex-basis: 100%;
 }
 
 @media (max-width: 575.98px) {
   [class*="grill-col-xs"] {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
 }
 
 @media (min-width: 576px) {
   .grill-col-xs {
     -ms-flex-preferred-size: auto;
-    flex-basis: auto;
+        flex-basis: auto;
   }
   [class|="grill-col-sm"] {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-xs-10 {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-xs-9 {
     -ms-flex-preferred-size: 90%;
-    flex-basis: 90%;
+        flex-basis: 90%;
   }
   .grill-col-xs-8 {
     -ms-flex-preferred-size: 80%;
-    flex-basis: 80%;
+        flex-basis: 80%;
   }
   .grill-col-xs-7 {
     -ms-flex-preferred-size: 70%;
-    flex-basis: 70%;
+        flex-basis: 70%;
   }
   .grill-col-xs-6 {
     -ms-flex-preferred-size: 60%;
-    flex-basis: 60%;
+        flex-basis: 60%;
   }
   .grill-col-xs-5 {
     -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
+        flex-basis: 50%;
   }
   .grill-col-xs-4 {
     -ms-flex-preferred-size: 40%;
-    flex-basis: 40%;
+        flex-basis: 40%;
   }
   .grill-col-xs-3 {
     -ms-flex-preferred-size: 30%;
-    flex-basis: 30%;
+        flex-basis: 30%;
   }
   .grill-col-xs-2 {
     -ms-flex-preferred-size: 20%;
-    flex-basis: 20%;
+        flex-basis: 20%;
   }
   .grill-col-xs-1 {
     -ms-flex-preferred-size: 10%;
-    flex-basis: 10%;
+        flex-basis: 10%;
   }
 }
 
 @media (min-width: 768px) {
   [class*="grill-col-md"] {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-sm {
     -ms-flex-preferred-size: auto;
-    flex-basis: auto;
+        flex-basis: auto;
   }
   .grill-col-sm-10 {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-sm-9 {
     -ms-flex-preferred-size: 90%;
-    flex-basis: 90%;
+        flex-basis: 90%;
   }
   .grill-col-sm-8 {
     -ms-flex-preferred-size: 80%;
-    flex-basis: 80%;
+        flex-basis: 80%;
   }
   .grill-col-sm-7 {
     -ms-flex-preferred-size: 70%;
-    flex-basis: 70%;
+        flex-basis: 70%;
   }
   .grill-col-sm-6 {
     -ms-flex-preferred-size: 60%;
-    flex-basis: 60%;
+        flex-basis: 60%;
   }
   .grill-col-sm-5 {
     -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
+        flex-basis: 50%;
   }
   .grill-col-sm-4 {
     -ms-flex-preferred-size: 40%;
-    flex-basis: 40%;
+        flex-basis: 40%;
   }
   .grill-col-sm-3 {
     -ms-flex-preferred-size: 30%;
-    flex-basis: 30%;
+        flex-basis: 30%;
   }
   .grill-col-sm-2 {
     -ms-flex-preferred-size: 20%;
-    flex-basis: 20%;
+        flex-basis: 20%;
   }
   .grill-col-sm-1 {
     -ms-flex-preferred-size: 10%;
-    flex-basis: 10%;
+        flex-basis: 10%;
   }
 }
 
 @media (min-width: 992px) {
   [class*="grill-col-lg"] {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-md {
     -ms-flex-preferred-size: auto;
-    flex-basis: auto;
+        flex-basis: auto;
   }
   .grill-col-md-10 {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-md-9 {
     -ms-flex-preferred-size: 90%;
-    flex-basis: 90%;
+        flex-basis: 90%;
   }
   .grill-col-md-8 {
     -ms-flex-preferred-size: 80%;
-    flex-basis: 80%;
+        flex-basis: 80%;
   }
   .grill-col-md-7 {
     -ms-flex-preferred-size: 70%;
-    flex-basis: 70%;
+        flex-basis: 70%;
   }
   .grill-col-md-6 {
     -ms-flex-preferred-size: 60%;
-    flex-basis: 60%;
+        flex-basis: 60%;
   }
   .grill-col-md-5 {
     -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
+        flex-basis: 50%;
   }
   .grill-col-md-4 {
     -ms-flex-preferred-size: 40%;
-    flex-basis: 40%;
+        flex-basis: 40%;
   }
   .grill-col-md-3 {
     -ms-flex-preferred-size: 30%;
-    flex-basis: 30%;
+        flex-basis: 30%;
   }
   .grill-col-md-2 {
     -ms-flex-preferred-size: 20%;
-    flex-basis: 20%;
+        flex-basis: 20%;
   }
   .grill-col-md-1 {
     -ms-flex-preferred-size: 10%;
-    flex-basis: 10%;
+        flex-basis: 10%;
   }
 }
 
 @media (min-width: 1200px) {
   [class*="grill-col-xl"] {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-lg {
     -ms-flex-preferred-size: auto;
-    flex-basis: auto;
+        flex-basis: auto;
   }
   .grill-col-lg-10 {
     -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
+        flex-basis: 100%;
   }
   .grill-col-lg-9 {
     -ms-flex-preferred-size: 90%;
-    flex-basis: 90%;
+        flex-basis: 90%;
   }
   .grill-col-lg-8 {
     -ms-flex-preferred-size: 80%;
-    flex-basis: 80%;
+        flex-basis: 80%;
   }
   .grill-col-lg-7 {
     -ms-flex-preferred-size: 70%;
-    flex-basis: 70%;
+        flex-basis: 70%;
   }
   .grill-col-lg-6 {
     -ms-flex-preferred-size: 60%;
-    flex-basis: 60%;
+        flex-basis: 60%;
   }
   .grill-col-lg-5 {
     -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
+        flex-basis: 50%;
   }
   .grill-col-lg-4 {
     -ms-flex-preferred-size: 40%;
-    flex-basis: 40%;
+        flex-basis: 40%;
   }
   .grill-col-lg-3 {
     -ms-flex-preferred-size: 30%;
-    flex-basis: 30%;
+        flex-basis: 30%;
   }
   .grill-col-lg-2 {
     -ms-flex-preferred-size: 20%;
-    flex-basis: 20%;
+        flex-basis: 20%;
   }
   .grill-col-lg-1 {
     -ms-flex-preferred-size: 10%;
-    flex-basis: 10%;
+        flex-basis: 10%;
   }
 }
 
@@ -366,18 +363,20 @@ table {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .grill-row * {
   padding-left: 1%;
   padding-right: 1%;
   display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .no-wrap {
   -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .grill-col,
@@ -387,10 +386,10 @@ table {
 .grill-col-lg,
 .grill-col-xl {
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -ms-flex-negative: 1;
-  flex-shrink: 1;
+      flex-shrink: 1;
 }
 
 .no-gutter * {
@@ -400,68 +399,68 @@ table {
 
 .order-last {
   -webkit-box-ordinal-group: 10000;
-  -ms-flex-order: 9999;
-  order: 9999;
+      -ms-flex-order: 9999;
+          order: 9999;
 }
 
 .order-first {
   -webkit-box-ordinal-group: 0;
-  -ms-flex-order: -1;
-  order: -1;
+      -ms-flex-order: -1;
+          order: -1;
 }
 
 .order-1 {
   -webkit-box-ordinal-group: 2;
-  -ms-flex-order: 1;
-  order: 1;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .order-2 {
   -webkit-box-ordinal-group: 3;
-  -ms-flex-order: 2;
-  order: 2;
+      -ms-flex-order: 2;
+          order: 2;
 }
 
 .order-3 {
   -webkit-box-ordinal-group: 4;
-  -ms-flex-order: 3;
-  order: 3;
+      -ms-flex-order: 3;
+          order: 3;
 }
 
 .order-4 {
   -webkit-box-ordinal-group: 5;
-  -ms-flex-order: 4;
-  order: 4;
+      -ms-flex-order: 4;
+          order: 4;
 }
 
 .order-5 {
   -webkit-box-ordinal-group: 6;
-  -ms-flex-order: 5;
-  order: 5;
+      -ms-flex-order: 5;
+          order: 5;
 }
 
 .order-6 {
   -webkit-box-ordinal-group: 7;
-  -ms-flex-order: 6;
-  order: 6;
+      -ms-flex-order: 6;
+          order: 6;
 }
 
 .order-7 {
   -webkit-box-ordinal-group: 8;
-  -ms-flex-order: 7;
-  order: 7;
+      -ms-flex-order: 7;
+          order: 7;
 }
 
 .order-8 {
   -webkit-box-ordinal-group: 9;
-  -ms-flex-order: 8;
-  order: 8;
+      -ms-flex-order: 8;
+          order: 8;
 }
 
 .order-9 {
   -webkit-box-ordinal-group: 10;
-  -ms-flex-order: 9;
-  order: 9;
+      -ms-flex-order: 9;
+          order: 9;
 }
 
 .center {
@@ -472,10 +471,7 @@ table {
   text-align: center;
 }
 
-.fix-top,
-.fix-left,
-.fix-right,
-.fix-bottom {
+.fix-top, .fix-left, .fix-right, .fix-bottom {
   position: fixed;
 }
 
@@ -528,15 +524,15 @@ table {
 
 #drop-down-container:hover .down-content {
   -webkit-transform: scaleY(1);
-  transform: scaleY(1);
+          transform: scaleY(1);
 }
 
 .down-content {
   width: 80px;
   -webkit-transform: scaleY(0);
-  transform: scaleY(0);
+          transform: scaleY(0);
   -webkit-transform-origin: top;
-  transform-origin: top;
+          transform-origin: top;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
