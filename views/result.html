@@ -1,38 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title>Search Result</title>
-    <link rel="stylesheet" type="text/css" href="../public/stylesheets/resultList.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <link rel="stylesheet" href="../public/stylesheets/jHin.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/stylesheets/resultList.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css"
+    />
   </head>
   <body>
     <div id="pageContainer">
-      <div id="map"></div>
-      <div id="resultList">
-        <button id="load-more-btn">Load More</button>
+      <div id="detail-container">
+        <img id="utilityIMG" /> <span id="sub-header">UW-Madison</span>
+        <h1 id="buildingName">Name</h1>
+        <span class="specific-label">Utility Location Detail:</span>
+        <p id="buildingDes">Description</p>
+        <span class="specific-label">Distance From Me :</span>
+        <p id="buildingDis">Distance</p>
+        <button class="specific-button" id="directionBtn">
+          Show Direction
+        </button>
+        <button class="specific-button" id="showIMG">Show Photo</button>
       </div>
-        <div id="detail-container">
-          <img id="utilityIMG">
-          <span id="sub-header">UW-Madison</span>
-          <h1 id="buildingName">Name</h1>
-          <span class="specific-label">Utility Location Detail:</span>
-          <p id="buildingDes">Description</p>
-          <span class="specific-label">Distance From Me  :</span>
-          <p id="buildingDis">Distance</p>
-          <button class="specific-button" id="directionBtn">Show Direction</button>
-          <button class="specific-button" id="showIMG">Show Photo</button>
+      <button id="back-btn">
+        <img class="icon" src="../public/resources/back-arrow.svg" />
+      </button>
+
+      <div class="container-fluid">
+        <div class="grill-row">
+          <div class="result-container grill-col-sm-6">
+            <ul class="result-list">
+              <!-- <li class="card">
+                <div class="card-text-container">
+                  <h3 class="card-title">Title</h3>
+                  <span class="card-annotation">Distance</span>
+                  <p class="card-detail">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </p>
+                </div>
+                <img class="card-img" src="dog.png" alt="" />
+              </li> -->
+              <button id="load-more-btn">Load More</button>
+            </ul>
+          </div>
+          <div class="map-container grill-col-sm-4"><div id="map"></div></div>
         </div>
-      <button id="back-btn"><img class="icon"src="../public/resources/back-arrow.svg"></button>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../public/javascripts/result.js"></script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSHKMu675X0qLQXWpDJBSGoFr8iVRxsA&callback=initMap">
-    </script>
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../public/javascripts/result.js"
+    ></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSHKMu675X0qLQXWpDJBSGoFr8iVRxsA&callback=initMap"
+    ></script>
   </body>
 </html>
