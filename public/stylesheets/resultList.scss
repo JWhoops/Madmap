@@ -1,18 +1,24 @@
+$uw-color: #c5050c;
+$color_2: white;
+$color_3: #231341;
+$color_4: grey;
+$font_family_1: ircular, -apple-system, BlinkMacSystemFont, Roboto,
+  Helvetica Neue, sans-serif;
+
 /*body width*/
 /*container*/
 /*map*/
 /*remove google logo and terms*/
 /*result list container*/
+/*# sourceMappingURL=result.css.map */
 body {
   width: 100%;
   overflow: auto;
 }
-
 #pageContainer {
   height: 100%;
   width: 100%;
 }
-
 #back-btn {
   display: none;
   border-style: none;
@@ -22,11 +28,9 @@ body {
   z-index: 1;
   background: transparent;
 }
-
 .icon {
   width: 35px;
 }
-
 #map {
   height: 100%;
   width: 100%;
@@ -34,74 +38,64 @@ body {
   transition: height 0.5s;
   border: 2px solid #c5050c;
 }
-
 a[href^="http://maps.google.com/maps"] {
   display: none !important;
 }
-
 a[href^="https://maps.google.com/maps"] {
   display: none !important;
 }
-
-.gmnoprint a {
-  display: none;
+.gmnoprint {
+  a {
+    display: none;
+  }
+  span {
+    display: none;
+  }
+  div {
+    background: none !important;
+  }
 }
-
-.gmnoprint span {
-  display: none;
-}
-
-.gmnoprint div {
-  background: none !important;
-}
-
 .gm-style-cc {
   display: none;
 }
-
 #load-more-btn {
   margin: 20px auto;
   display: none;
   width: 96%;
   color: white;
   height: 40px;
-  border-style: none;
-  border-radius: 5px;
+  border: {
+    style: none;
+    radius: 5px;
+  }
   background: transparent;
-  background-color: #c5050c;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  background-color: $uw-color;
+  box-sizing: border-box;
   font-weight: 900;
 }
-
 #detail-container {
   display: none;
   padding: 0 24px;
   margin-top: 20px;
-  font-family: ircular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-family: $font_family_1;
   text-align: center;
 }
 
 .row-row {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #sub-header {
   font-weight: 900;
   margin-top: 15px;
   margin-bottom: 10px;
   font-size: 14px;
-  color: #c5050c;
+  color: $uw-color;
   display: block;
 }
-
 #buildingName {
   margin-top: -3px;
   line-height: 1;
 }
-
 #buildingDes {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -109,7 +103,6 @@ a[href^="https://maps.google.com/maps"] {
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
-
 #utilityIMG {
   display: none;
   width: 100%;
@@ -118,33 +111,28 @@ a[href^="https://maps.google.com/maps"] {
   top: 0;
   right: 0;
 }
-
 .specific-label {
   display: block;
   font-size: 1.15em;
   font-weight: 500;
 }
-
 .specific-button {
-  color: white;
+  color: $color_2;
   background: #c5050c;
   font-size: 1em;
   padding: 10px 15px;
   border-style: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 5px;
   font-weight: 550;
   width: 120px;
 }
-
 #showIMG,
 #directionBtn {
   display: block;
   margin: 10px auto;
   width: 60%;
 }
-
 .main-container {
   margin-top: 30px;
 }
@@ -153,92 +141,87 @@ a[href^="https://maps.google.com/maps"] {
   height: 100vh;
   padding-right: 0;
 }
-
 .map-container {
   padding-left: 10px;
   padding-top: 20px;
   height: 500px;
 }
-
 .result-list {
   margin-top: 20px;
   padding: 10px;
   border-top: 1px solid #c5050c;
 }
-
 .card {
   border-bottom: 1px solid #c5050c;
   padding: 20px;
   padding-right: 0;
   position: relative;
+  .card-text-container {
+    display: inline-block;
+    width: 53%;
+    vertical-align: top;
+  }
+  .card-detail {
+    margin-top: 8%;
+    margin-left: 5%;
+    font-size: 1.25em;
+  }
+  .card-title {
+    font-size: 2vw;
+    font-size: bold;
+  }
+  .card-img {
+    width: 45%;
+    display: inline-block;
+    border: 1px solid $uw-color;
+  }
+  .card-annotation {
+    font-size: 1.25em;
+    margin-top: 3%;
+    margin-left: 5%;
+    display: block;
+    color: $color_4;
+    font-size: 1em;
+  }
 }
-
-.card .card-text-container {
-  display: inline-block;
-  width: 53%;
-  vertical-align: top;
-}
-
-.card .card-detail {
-  margin-top: 8%;
-  margin-left: 5%;
-  font-size: 1.25em;
-}
-
-.card .card-title {
-  font-size: 2vw;
-  font-size: bold;
-}
-
-.card .card-img {
-  width: 45%;
-  display: inline-block;
-  border: 1px solid #c5050c;
-}
-
-.card .card-annotation {
-  font-size: 1.25em;
-  margin-top: 3%;
-  margin-left: 5%;
-  display: block;
-  color: grey;
-  font-size: 1em;
-}
-
 @media (max-width: 768px) {
   .map-container {
     -webkit-box-ordinal-group: 0;
     -ms-flex-order: -1;
     order: -1;
   }
-  .card .card-title {
-    font-size: 1.5em;
+  .card {
+    .card-title {
+      font-size: 1.5em;
+    }
   }
 }
-
 @media (max-width: 567px) {
   .card {
     padding: 5px;
     padding-top: 10px;
+    .card-detail {
+      margin-top: 3%;
+    }
   }
-  .card .card-detail {
-    margin-top: 3%;
-  }
+
   .map-container {
     height: 50vh;
     padding: 0;
     border: 0;
+
+    #map {
+      border: none;
+    }
   }
-  .map-container #map {
-    border: none;
-  }
+
   .result-list {
     padding: 1px;
     border: none;
   }
+
   #detail-container {
     margin-top: 0px;
     padding-bottom: 15px;
   }
 }
-/*# sourceMappingURL=resultList.css.map */

@@ -155,7 +155,7 @@ function initMap() {
       window.location.href = "../index.html";
     } else {
       $("#detail-container").fadeOut("fast");
-      resultList.fadeIn("fast");
+      $(".result-container").fadeIn("fast");
       //remove all current marks
       removeCurrentMarks();
       currentMarks = [];
@@ -201,7 +201,7 @@ function initMap() {
     //hold to show button
     let img = $("#utilityIMG");
     let showBtn = $("#showIMG");
-    showBtn.text("Show Photo");
+    showBtn.text("Photo");
     img.css("display", "none");
     showBtn.on("click", () => {
       if (showBtn.text() == "Show Photo") {
@@ -213,7 +213,8 @@ function initMap() {
       }
     });
     // $("#map").css("height", "60%");
-    $("#detail-container").fadeIn("slow");
+    $(".result-container").fadeOut("fast");
+    $("#detail-container").fadeIn("fast");
   };
 
   const removeCurrentMarks = () => {

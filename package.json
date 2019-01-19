@@ -1,0 +1,22 @@
+{
+  "name": "madmap",
+  "version": "1.0.0",
+  "description": "TODO:\r <br>\r auto zoom the map with respect to the furthest-lat and furthest-lng.\r ......",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/q835771840/madmap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/q835771840/madmap/issues"
+  },
+  "homepage": "https://github.com/q835771840/madmap#readme",
+  "dependencies": {
+    "lightbox2": "^2.10.0"
+  }
+}

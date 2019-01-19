@@ -15,48 +15,41 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules\lightbox2\src\css\lightbox.css"
     />
   </head>
   <body>
-    <div id="pageContainer">
-      <div id="detail-container">
-        <img id="utilityIMG" /> <span id="sub-header">UW-Madison</span>
-        <h1 id="buildingName">Name</h1>
-        <span class="specific-label">Utility Location Detail:</span>
-        <p id="buildingDes">Description</p>
-        <span class="specific-label">Distance From Me :</span>
-        <p id="buildingDis">Distance</p>
-        <button class="specific-button" id="directionBtn">
-          Show Direction
-        </button>
-        <button class="specific-button" id="showIMG">Show Photo</button>
-      </div>
+    <section id="pageContainer">
       <button id="back-btn">
         <img class="icon" src="../public/resources/back-arrow.svg" />
       </button>
-
-      <div class="container-fluid">
-        <div class="grill-row">
-          <div class="result-container grill-col-sm-6">
+      <div class="container-fluid main-container">
+        <div class="grill-row row-row">
+          <div class="result-container grill-col-sm-5">
             <ul class="result-list">
-              <!-- <li class="card">
-                <div class="card-text-container">
-                  <h3 class="card-title">Title</h3>
-                  <span class="card-annotation">Distance</span>
-                  <p class="card-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  </p>
-                </div>
-                <img class="card-img" src="dog.png" alt="" />
-              </li> -->
               <button id="load-more-btn">Load More</button>
             </ul>
           </div>
-          <div class="map-container grill-col-sm-4"><div id="map"></div></div>
+          <div class="grill-col-sm-5" id="detail-container">
+            <img id="utilityIMG" /> <span id="sub-header">UW-Madison</span>
+            <h1 id="buildingName">Name</h1>
+            <span class="specific-label">Utility Location Detail:</span>
+            <p id="buildingDes">Description</p>
+            <span class="specific-label">Distance From Me :</span>
+            <p id="buildingDis">Distance</p>
+            <button class="specific-button" id="directionBtn">Direction</button>
+            <button class="specific-button" id="showIMG">Picture</button>
+          </div>
+          <aside class="map-container grill-col-sm-4">
+            <div id="map"></div>
+          </aside>
         </div>
       </div>
-    </div>
+    </section>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -71,5 +64,6 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSHKMu675X0qLQXWpDJBSGoFr8iVRxsA&callback=initMap"
     ></script>
+    <script src="..\node_modules\lightbox2\src\js\lightbox.js"></script>
   </body>
 </html>
