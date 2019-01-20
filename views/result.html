@@ -23,10 +23,21 @@
     />
   </head>
   <body>
+    <header>
+      <nav class="nav fix-top">
+        <div id="nav-center-container">MadMap</div>
+        <button id="back-btn">
+          <img class="icon" src="../public/resources/back-arrow.svg" />
+        </button>
+      </nav>
+    </header>
     <section id="pageContainer">
-      <button id="back-btn">
-        <img class="icon" src="../public/resources/back-arrow.svg" />
-      </button>
+      <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
       <div class="container-fluid main-container">
         <div class="grill-row row-row">
           <div class="result-container grill-col-sm-5">
@@ -35,7 +46,7 @@
             </ul>
           </div>
           <div class="grill-col-sm-5" id="detail-container">
-            <img id="utilityIMG" /> <span id="sub-header">UW-Madison</span>
+            <span id="sub-header">UW-Madison</span>
             <h1 id="buildingName">Name</h1>
             <span class="specific-label">Utility Location Detail:</span>
             <p id="buildingDes">Description</p>
@@ -44,8 +55,9 @@
             <button class="specific-button" id="directionBtn">Direction</button>
             <button class="specific-button" id="showIMG">Picture</button>
           </div>
-          <aside class="map-container grill-col-sm-4">
+          <aside id="map-container" class="grill-col-sm-5">
             <div id="map"></div>
+            <img id="utilityIMG" />
           </aside>
         </div>
       </div>

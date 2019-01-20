@@ -142,7 +142,9 @@ function initMap() {
     try to calculate the approporiate scale*/
       sortByDist(utils);
       loadMoreList(utils, 4, $("#load-more-btn"));
-      $("#back-btn").css("display", "block");
+      $("#back-btn").show();
+      $(".sk-folding-cube ").remove();
+      $("#map-container").css("visibility", "visible");
       $("#load-more-btn").css("display", "block");
     });
   };
@@ -154,8 +156,8 @@ function initMap() {
     if (c == "none" || c == "") {
       window.location.href = "../index.html";
     } else {
-      $("#detail-container").fadeOut("fast");
-      $(".result-container").fadeIn("fast");
+      $("#detail-container").hide();
+      $(".result-container").show();
       //remove all current marks
       removeCurrentMarks();
       currentMarks = [];
@@ -172,7 +174,7 @@ function initMap() {
 
   //show specific ite
   const showSpcItem = obj => {
-    resultList.fadeOut("fast"); //hide result list
+    resultList.hide(); //hide result list
     removeCurrentMarks();
     creatMark(obj.lat, obj.lng);
     map.setCenter({ lat: obj.lat, lng: obj.lng });
@@ -199,22 +201,23 @@ function initMap() {
       });
     });
     //hold to show button
-    let img = $("#utilityIMG");
-    let showBtn = $("#showIMG");
-    showBtn.text("Photo");
+    let img = $("#utilityIMG"),
+      showBtn = $("#showIMG");
+    showBtn.text("Show Photo");
     img.css("display", "none");
     showBtn.on("click", () => {
       if (showBtn.text() == "Show Photo") {
-        img.fadeIn("fast");
+        $("#map").hide();
+        img.show();
         showBtn.text("Show Map");
       } else {
-        img.fadeOut("fast");
+        img.hide();
+        $("#map").show();
         showBtn.text("Show Photo");
       }
     });
-    // $("#map").css("height", "60%");
-    $(".result-container").fadeOut("fast");
-    $("#detail-container").fadeIn("fast");
+    $(".result-container").hide();
+    $("#detail-container").show();
   };
 
   const removeCurrentMarks = () => {
@@ -276,7 +279,7 @@ function initMap() {
       pp = (cp = step); //pp=pause_point cp=current_point
     if (cNums <= step) {
       pp = cNums;
-      btn.fadeOut("fast");
+      btn.hide();
     } else {
       btn.on("click", () => {
         if (pp <= cNums) {
@@ -286,7 +289,7 @@ function initMap() {
             cp++;
           }
         }
-        if (pp >= cNums) btn.fadeOut("fast"); //operation after loading all items
+        if (pp >= cNums) btn.hide(); //operation after loading all items
       });
     }
     //default load

@@ -8,6 +8,22 @@ body {
   overflow: auto;
 }
 
+.nav {
+  height: 50px;
+  background-color: #c5050c;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 10;
+  -webkit-box-shadow: 0px 5px 11px -5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 5px 11px -5px rgba(0, 0, 0, 0.3);
+}
+
+.nav #nav-center-container {
+  color: white;
+  font-weight: 900;
+}
+
 #pageContainer {
   height: 100%;
   width: 100%;
@@ -17,14 +33,16 @@ body {
   display: none;
   border-style: none;
   position: absolute;
-  top: 2%;
-  left: 1%;
-  z-index: 1;
+  top: 55%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0.8%;
+  z-index: 11;
   background: transparent;
 }
 
 .icon {
-  width: 35px;
+  width: 33px;
 }
 
 #map {
@@ -32,7 +50,7 @@ body {
   width: 100%;
   -webkit-transition: height 0.5s;
   transition: height 0.5s;
-  border: 2px solid #c5050c;
+  border: 1px solid #c5050c;
 }
 
 a[href^="http://maps.google.com/maps"] {
@@ -113,10 +131,8 @@ a[href^="https://maps.google.com/maps"] {
 #utilityIMG {
   display: none;
   width: 100%;
-  height: 60%;
-  position: absolute;
-  top: 0;
-  right: 0;
+  height: 100%;
+  z-index: 2;
 }
 
 .specific-label {
@@ -154,19 +170,19 @@ a[href^="https://maps.google.com/maps"] {
   padding-right: 0;
 }
 
-.map-container {
-  padding-left: 10px;
-  padding-top: 20px;
-  height: 500px;
+#map-container {
+  padding-left: 0 !important;
+  margin-top: 35px;
+  height: 600px;
+  visibility: hidden;
 }
 
 .result-list {
-  margin-top: 20px;
-  padding: 10px;
-  border-top: 1px solid #c5050c;
+  margin-top: 15px;
 }
 
 .card {
+  border: none;
   border-bottom: 1px solid #c5050c;
   padding: 20px;
   padding-right: 0;
@@ -180,24 +196,24 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 .card .card-detail {
-  margin-top: 8%;
+  margin-top: 1%;
   margin-left: 5%;
-  font-size: 1.25em;
+  font-size: 1.35em;
 }
 
 .card .card-title {
-  font-size: 2vw;
+  font-size: 1.8em;
   font-size: bold;
 }
 
 .card .card-img {
-  width: 45%;
+  width: 42%;
   display: inline-block;
   border: 1px solid #c5050c;
 }
 
 .card .card-annotation {
-  font-size: 1.25em;
+  font-size: 1.25em !important;
   margin-top: 3%;
   margin-left: 5%;
   display: block;
@@ -205,36 +221,174 @@ a[href^="https://maps.google.com/maps"] {
   font-size: 1em;
 }
 
-@media (max-width: 768px) {
-  .map-container {
-    -webkit-box-ordinal-group: 0;
-    -ms-flex-order: -1;
-    order: -1;
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.sk-folding-cube .sk-cube:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #c5050c;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+@-webkit-keyframes sk-foldCubeAngle {
+  0%,
+  10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
   }
+  25%,
+  75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-foldCubeAngle {
+  0%,
+  10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
   .card .card-title {
     font-size: 1.5em;
+  }
+  .sk-folding-cube {
+    left: 45%;
+  }
+  #map-container {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    margin-top: 20px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    height: 50vh;
+    border: 0;
+  }
+  #map-container #map {
+    border: none;
+  }
+  .nav {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .nav #nav-center-container {
+    font-size: 1.6em;
+    text-transform: uppercase;
+  }
+  .nav #back-btn .icon {
+    width: 1.7em;
+  }
+  .result-list {
+    padding: 1px;
+    border: none;
+    margin-top: 0;
   }
 }
 
 @media (max-width: 567px) {
+  .nav {
+    height: 40px;
+  }
+  .nav #nav-center-container {
+    font-size: 1.6em;
+  }
+  .nav #back-btn .icon {
+    width: 1.65em;
+  }
   .card {
     padding: 5px;
     padding-top: 10px;
   }
   .card .card-detail {
     margin-top: 3%;
+    font-size: 1em;
   }
-  .map-container {
-    height: 50vh;
-    padding: 0;
-    border: 0;
+  .card .card-title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
   }
-  .map-container #map {
-    border: none;
-  }
-  .result-list {
-    padding: 1px;
-    border: none;
+  #map-container {
+    margin-top: 10px;
   }
   #detail-container {
     margin-top: 0px;
