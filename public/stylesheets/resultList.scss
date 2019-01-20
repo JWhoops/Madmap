@@ -1,5 +1,5 @@
 $uw-color: #c5050c;
-$color_2: white;
+$why: white;
 $color_3: #231341;
 $color_4: grey;
 $font_family_1: ircular, -apple-system, BlinkMacSystemFont, Roboto,
@@ -128,7 +128,7 @@ a[href^="https://maps.google.com/maps"] {
   font-weight: 500;
 }
 .specific-button {
-  color: $color_2;
+  color: $why;
   background: #c5050c;
   font-size: 1em;
   padding: 10px 15px;
@@ -149,8 +149,11 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 .result-container {
-  height: 100vh;
   padding-right: 0;
+  //chrome hide scroll bar
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 #map-container {
@@ -290,7 +293,7 @@ a[href^="https://maps.google.com/maps"] {
     }
   }
 
-  .sk-folding-cube{
+  .sk-folding-cube {
     left: 45%;
   }
 

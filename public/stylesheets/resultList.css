@@ -166,7 +166,6 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 .result-container {
-  height: 100vh;
   padding-right: 0;
 }
 
