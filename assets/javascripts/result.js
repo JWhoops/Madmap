@@ -113,9 +113,9 @@ function initMap() {
         directionsService.route(request, (result, status) => {
           if (status === "OK") {
             directionsDisplay.setDirections(result);
-            $("#map-loading-icon").text("Got it! 🥳");
+            $("#map-loading-icon").text("Got it! 😄");
             setTimeout(() => {
-              $("#map-loading-icon").text("OMW 🧐");
+              $("#map-loading-icon").text("Searching... 🧐");
               $("#map-loading-icon").hide();
               $("#map").css("opacity", "1");
             }, 1000);
@@ -137,7 +137,8 @@ function initMap() {
     $(hTag).text(obj.name);
     $(imgTag).attr("src", obj.bImage);
     $(disTag).text(`${obj.dist} miles from me`);
-    if (obj.description.length > 20) $(desTag).text(obj.description);
+    if ($(window).width() <= 576)
+      $(desTag).text(`${obj.description.substring(0, 20)} ...`);
     else $(desTag).text(obj.description);
     $(liTag).addClass("card");
     $(imgTag).addClass("card-img");
@@ -165,7 +166,40 @@ function initMap() {
     // how to graph map
     map = new google.maps.Map(document.getElementById("map"), {
       mapTypeId: "roadmap",
-      disableDefaultUI: true
+      disableDefaultUI: true,
+      styles: [
+        {
+          featureType: "administrative.land_parcel",
+          elementType: "labels",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "poi",
+          elementType: "labels.text",
+          stylers: [{ visibility: "off" }]
+        },
+        { featureType: "poi.business", stylers: [{ visibility: "off" }] },
+        {
+          featureType: "poi.school",
+          elementType: "labels.text",
+          stylers: [
+            { color: "#c5050c" },
+            { visibility: "simplified" },
+            { weight: 3 }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "road.local",
+          elementType: "labels",
+          stylers: [{ visibility: "off" }]
+        },
+        { featureType: "transit", stylers: [{ visibility: "off" }] }
+      ]
     });
     directionsDisplay.setMap(map);
 

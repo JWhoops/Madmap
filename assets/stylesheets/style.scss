@@ -1,18 +1,18 @@
+@import "resultList";
+
 body {
-  background: url("../resources/campus_skyline_dusk14_8612-min.jpg");
+  background: url("../images/campus_skyline_dusk14_8612-min.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   background-position: 60% 0%;
 }
-
 .content {
   position: absolute;
   top: 10%;
   width: 100%;
   text-align: center;
 }
-
 #title {
   font-weight: bold;
   text-shadow: 1px 1px grey;
@@ -21,7 +21,6 @@ body {
   color: #c5050c;
   font-family: "Chakra Petch", sans-serif;
 }
-
 .main-container {
   background: rgba(237, 237, 237, 0);
   background: -moz-linear-gradient(
@@ -62,12 +61,10 @@ body {
     rgba(237, 237, 237, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ededed', GradientType=1 );
+  > * {
+    margin: 1%;
+  }
 }
-
-.main-container > * {
-  margin: 1%;
-}
-
 .btn {
   display: inline-block;
   background: transparent;
@@ -75,103 +72,88 @@ body {
   transition: 0.2s ease;
   border: 1px solid #c5050c;
   border-radius: 5%;
+  &:hover {
+    background-color: white;
+    border: 5px solid #c5050c;
+    transform: scale(1.1);
+  }
+  img {
+    width: 90px;
+    height: 90px;
+  }
 }
-
-.btn:hover {
-  background-color: white;
-  border: 5px solid #c5050c;
-  transform: scale(1.1);
-}
-
-.btn img {
-  width: 90px;
-  height: 90px;
-}
-
 @media only screen and (max-width: 768px) {
   #title {
     visibility: hidden;
     word-spacing: -999px;
     letter-spacing: -999px;
+    &:after {
+      content: "MadMap";
+      position: relative;
+      top: -0.5em;
+      visibility: visible;
+      word-spacing: normal;
+      letter-spacing: normal;
+    }
   }
-
-  #title:after {
-    content: "MadMap";
-    position: relative;
-    top: -0.5em;
-    visibility: visible;
-    word-spacing: normal;
-    letter-spacing: normal;
-  }
-
   .content {
     top: 0;
   }
-
   .btn {
     border: 2px solid #c5050c;
     margin-top: 2%;
     padding: 2%;
-  }
-
-  .btn img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .btn:hover {
-    background-color: white;
-    border: 1px dashed #c5050c;
-    transform: none;
+    border-radius: 0;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+    &:hover {
+      border: none;
+      transform: none;
+    }
   }
 }
-
 @media only screen and (max-width: 576px) {
   body {
     min-height: 550px !important;
     background-position: 50% 50%;
   }
-
-  #title:after {
-    content: "MadMap";
-    position: relative;
-    font-size: 0.8em;
-    top: -1em;
-    visibility: visible;
-    word-spacing: normal;
-    letter-spacing: normal;
-  }
-
   #title {
+    &:after {
+      content: "MadMap";
+      position: relative;
+      font-size: 0.8em;
+      top: -1em;
+      visibility: visible;
+      word-spacing: normal;
+      letter-spacing: normal;
+    }
     height: 16vh;
     font-size: 4em;
   }
-
   .btn {
     border: none;
-    border-top: 1px solid #c5050c;
+    border-top: 1px solid grey;
     margin-top: 0;
     margin-bottom: 0;
     border-radius: 0;
     height: 16vh;
   }
 }
-
 @media only screen and (min-width: 577px) and (max-width: 767.5px) {
   body {
-    min-height: 670px !important;
+    min-height: 750px !important;
     background-position: 60%;
   }
-
   .btn {
     border: none;
-    border-top: 2px solid #c5050c;
+    border-top: 1px solid grey;
     margin-bottom: 0;
     border-radius: 0;
-  }
-
-  .btn img {
-    width: 70px;
-    height: 70px;
+    img {
+      width: 70px;
+      height: 70px;
+    }
   }
 }

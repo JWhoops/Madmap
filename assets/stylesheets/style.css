@@ -30,10 +30,11 @@ body {
 }
 
 #back-btn {
+  cursor: pointer;
   display: none;
   border-style: none;
   position: absolute;
-  top: 55%;
+  top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   left: 0.8%;
@@ -90,6 +91,10 @@ a[href^="https://maps.google.com/maps"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-weight: 900;
+}
+
+#load-more-btn:hover {
+  cursor: pointer;
 }
 
 #detail-container {
@@ -178,7 +183,7 @@ a[href^="https://maps.google.com/maps"] {
 #map-container {
   padding-left: 0 !important;
   margin-top: 35px;
-  height: 600px;
+  height: 525px;
   visibility: hidden;
   position: relative;
 }
@@ -206,6 +211,14 @@ a[href^="https://maps.google.com/maps"] {
   padding: 20px;
   padding-right: 0;
   position: relative;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .card-title {
+  color: #c5050c;
 }
 
 .card .card-text-container {
@@ -236,7 +249,7 @@ a[href^="https://maps.google.com/maps"] {
   margin-top: 3%;
   margin-left: 5%;
   display: block;
-  color: grey;
+  color: gray;
   font-size: 1em;
 }
 
@@ -386,9 +399,6 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 @media (max-width: 567px) {
-  .nav {
-    height: 40px;
-  }
   .nav #nav-center-container {
     font-size: 1.6em;
   }
@@ -407,9 +417,6 @@ a[href^="https://maps.google.com/maps"] {
     font-size: 1.2em;
     margin-bottom: 5px;
   }
-  #map-container {
-    margin-top: 10px;
-  }
   #map-container #map-loading-icon {
     font-size: 2.5em;
   }
@@ -418,4 +425,141 @@ a[href^="https://maps.google.com/maps"] {
     padding-bottom: 15px;
   }
 }
-/*# sourceMappingURL=resultList.css.map */
+
+body {
+  background: url("../images/campus_skyline_dusk14_8612-min.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: 60% 0%;
+}
+
+.content {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+#title {
+  font-weight: bold;
+  text-shadow: 1px 1px grey;
+  display: inline-block;
+  font-size: 4em;
+  color: #c5050c;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.main-container {
+  background: rgba(237, 237, 237, 0);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(237, 237, 237, 0)), color-stop(53%, rgba(246, 246, 246, 0.53)), color-stop(100%, #ededed));
+  background: -webkit-gradient(linear, left top, right top, from(rgba(237, 237, 237, 0)), color-stop(53%, rgba(246, 246, 246, 0.53)), to(#ededed));
+  background: linear-gradient(to right, rgba(237, 237, 237, 0) 0%, rgba(246, 246, 246, 0.53) 53%, #ededed 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ededed', GradientType=1 );
+}
+
+.main-container > * {
+  margin: 1%;
+}
+
+.btn {
+  display: inline-block;
+  background: transparent;
+  border-style: none;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  border: 1px solid #c5050c;
+  border-radius: 5%;
+}
+
+.btn:hover {
+  background-color: white;
+  border: 5px solid #c5050c;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.btn img {
+  width: 90px;
+  height: 90px;
+}
+
+@media only screen and (max-width: 768px) {
+  #title {
+    visibility: hidden;
+    word-spacing: -999px;
+    letter-spacing: -999px;
+  }
+  #title:after {
+    content: "MadMap";
+    position: relative;
+    top: -0.5em;
+    visibility: visible;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+  .content {
+    top: 0;
+  }
+  .btn {
+    border: 2px solid #c5050c;
+    margin-top: 2%;
+    padding: 2%;
+    border-radius: 0;
+  }
+  .btn img {
+    width: 60px;
+    height: 60px;
+  }
+  .btn:hover {
+    border: none;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  body {
+    min-height: 550px !important;
+    background-position: 50% 50%;
+  }
+  #title {
+    height: 16vh;
+    font-size: 4em;
+  }
+  #title:after {
+    content: "MadMap";
+    position: relative;
+    font-size: 0.8em;
+    top: -1em;
+    visibility: visible;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
+  .btn {
+    border: none;
+    border-top: 1px solid grey;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    height: 16vh;
+  }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 767.5px) {
+  body {
+    min-height: 750px !important;
+    background-position: 60%;
+  }
+  .btn {
+    border: none;
+    border-top: 1px solid grey;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  .btn img {
+    width: 70px;
+    height: 70px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

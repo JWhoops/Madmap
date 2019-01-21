@@ -1,9 +1,6 @@
 $uw-color: #c5050c;
-$why: white;
-$color_3: #231341;
-$color_4: grey;
-$font_family_1: ircular, -apple-system, BlinkMacSystemFont, Roboto,
-  Helvetica Neue, sans-serif;
+$card-font: ircular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue,
+  sans-serif;
 
 /*body width*/
 /*container*/
@@ -33,10 +30,11 @@ body {
   width: 100%;
 }
 #back-btn {
+  cursor: pointer;
   display: none;
   border-style: none;
   position: absolute;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
   left: 0.8%;
   z-index: 11;
@@ -86,12 +84,16 @@ a[href^="https://maps.google.com/maps"] {
   background-color: $uw-color;
   box-sizing: border-box;
   font-weight: 900;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 #detail-container {
   display: none;
   padding: 0 24px;
   margin-top: 20px;
-  font-family: $font_family_1;
+  font-family: $card-font;
   text-align: center;
 }
 
@@ -129,7 +131,7 @@ a[href^="https://maps.google.com/maps"] {
   font-weight: 500;
 }
 .specific-button {
-  color: $why;
+  color: white;
   background: #c5050c;
   font-size: 1em;
   padding: 10px 15px;
@@ -166,13 +168,13 @@ a[href^="https://maps.google.com/maps"] {
 #map-container {
   padding-left: 0 !important;
   margin-top: 35px;
-  height: 600px;
+  height: 525px;
   visibility: hidden;
   position: relative;
 
   #map-loading-icon {
     display: none;
-    font-family: $font_family_1;
+    font-family: $card-font;
     position: absolute;
     color: black;
     font-size: 3em;
@@ -191,6 +193,14 @@ a[href^="https://maps.google.com/maps"] {
   padding: 20px;
   padding-right: 0;
   position: relative;
+
+  &:hover {
+    cursor: pointer;
+    .card-title {
+      color: $uw-color;
+    }
+  }
+
   .card-text-container {
     display: inline-block;
     width: 53%;
@@ -215,7 +225,7 @@ a[href^="https://maps.google.com/maps"] {
     margin-top: 3%;
     margin-left: 5%;
     display: block;
-    color: $color_4;
+    color: gray;
     font-size: 1em;
   }
 }
@@ -353,7 +363,6 @@ a[href^="https://maps.google.com/maps"] {
 }
 @media (max-width: 567px) {
   .nav {
-    height: 40px;
     #nav-center-container {
       font-size: 1.6em;
     }
@@ -378,7 +387,6 @@ a[href^="https://maps.google.com/maps"] {
   }
 
   #map-container {
-    margin-top: 10px;
     #map-loading-icon {
       font-size: 2.5em;
     }
