@@ -41,10 +41,11 @@ body {
   left: 0.8%;
   z-index: 11;
   background: transparent;
+  .icon {
+    width: 33px;
+  }
 }
-.icon {
-  width: 33px;
-}
+
 #map {
   height: 100%;
   width: 100%;
@@ -138,8 +139,14 @@ a[href^="https://maps.google.com/maps"] {
   font-weight: 550;
   width: 120px;
 }
-#showIMG,
+
+#utilIMG,
 #directionBtn {
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+
   display: block;
   margin: 10px auto;
   width: 60%;
@@ -161,6 +168,19 @@ a[href^="https://maps.google.com/maps"] {
   margin-top: 35px;
   height: 600px;
   visibility: hidden;
+  position: relative;
+
+  #map-loading-icon {
+    display: none;
+    font-family: $font_family_1;
+    position: absolute;
+    color: black;
+    font-size: 3em;
+    top: 40%;
+    left: 50%;
+    font-weight: bold;
+    transform: translateX(-50%);
+  }
 }
 .result-list {
   margin-top: 15px;
@@ -300,6 +320,7 @@ a[href^="https://maps.google.com/maps"] {
   #map-container {
     order: -1;
     margin-top: 20px;
+    height: 40vh !important;
     padding: {
       left: 0 !important;
       right: 0 !important;
@@ -338,7 +359,7 @@ a[href^="https://maps.google.com/maps"] {
     }
 
     #back-btn .icon {
-      width: 1.65em;
+      width: 1.8em;
     }
   }
 
@@ -358,6 +379,9 @@ a[href^="https://maps.google.com/maps"] {
 
   #map-container {
     margin-top: 10px;
+    #map-loading-icon {
+      font-size: 2.5em;
+    }
   }
 
   #detail-container {

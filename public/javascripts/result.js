@@ -94,9 +94,15 @@ function initMap() {
     $("#buildingName").text(`${obj.type} in ${obj.name}`);
     $("#buildingDes").text(obj.description);
     $("#buildingDis").text(`${obj.dist} miles`);
-    $("#utilityIMG").attr("src", obj.uImage);
+    $("#utilIMG").attr("href", obj.uImage);
     // direction button
+    $("#directionBtn").prop("disabled", false); // enable first
     $("#directionBtn").on("click", () => {
+      // calculating mask
+      $("#map-loading-icon").show();
+      $("#map").css("opacity", "0.5");
+      // disable the button
+      $("#directionBtn").prop("disabled", true);
       getGeolocation((lat, lng) => {
         removeCurrentMarks();
         const request = {
@@ -107,25 +113,15 @@ function initMap() {
         directionsService.route(request, (result, status) => {
           if (status === "OK") {
             directionsDisplay.setDirections(result);
+            $("#map-loading-icon").text("Got it! 🥳");
+            setTimeout(() => {
+              $("#map-loading-icon").text("OMW 🧐");
+              $("#map-loading-icon").hide();
+              $("#map").css("opacity", "1");
+            }, 1000);
           }
         });
       });
-    });
-    // hold to show button
-    const img = $("#utilityIMG");
-    const showBtn = $("#showIMG");
-    showBtn.text("Show Photo");
-    img.hide();
-    showBtn.on("click", () => {
-      if (showBtn.text() === "Show Photo") {
-        $("#map").hide();
-        img.show();
-        showBtn.text("Show Map");
-      } else {
-        img.hide();
-        $("#map").show();
-        showBtn.text("Show Photo");
-      }
     });
     $(".result-container").hide();
     $("#detail-container").show();
@@ -221,6 +217,7 @@ function initMap() {
         });
       }
       // default load
+
       for (let i = 0; i < pp; i += 1) {
         $(createCard(liArr[i])).insertBefore(btn);
       }
@@ -266,7 +263,7 @@ function initMap() {
       sortByDist(utils);
       loadMoreList(utils, 4, $("#load-more-btn"));
       $("#back-btn").show();
-      $(".sk-folding-cube ").remove();
+      $(".sk-folding-cube").remove();
       $("#map-container").css("visibility", "visible");
       $("#load-more-btn").css("display", "block");
     });
@@ -283,11 +280,6 @@ function initMap() {
       directionsDisplay.set("directions", null);
       $("#detail-container").hide();
       $(".result-container").show();
-      // check if image is on
-      if ($("#utilityIMG").is(":visible")) {
-        $("#utilityIMG").hide();
-        $("#map").show();
-      }
       // remove all current marks
       removeCurrentMarks();
       currentMarks = [];
@@ -296,7 +288,6 @@ function initMap() {
         creatMark(coor.lat, coor.lng);
       });
       $("#directionBtn").off();
-      $("#showIMG").off();
       map.fitBounds(bounds); // use old bounds
       window.scrollTo(0, currentScroll); // scroll to previous position
     }
@@ -311,7 +302,7 @@ function initMap() {
       populateResults(data);
     },
     error() {
-      alert("Failed!");
+      alert("woops Server down!");
     }
   });
 
@@ -328,5 +319,11 @@ function initMap() {
       } // saves the new position for iteration.
       scrollPos = document.body.getBoundingClientRect().top;
     }
+  });
+  // lightbox 2 option
+  lightbox.option({
+    resizeDuration: 100,
+    wrapAround: true,
+    fadeDuration: 100
   });
 }

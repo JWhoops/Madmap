@@ -52,12 +52,16 @@
             <p id="buildingDes">Description</p>
             <span class="specific-label">Distance From Me :</span>
             <p id="buildingDis">Distance</p>
-            <button class="specific-button" id="directionBtn">Direction</button>
-            <button class="specific-button" id="showIMG">Picture</button>
+            <button class="specific-button" id="directionBtn">
+              Get Direction
+            </button>
+            <a id="utilIMG" class="specific-button" data-lightbox="image-1"
+              >Show Picture</a
+            >
           </div>
           <aside id="map-container" class="grill-col-sm-5">
             <div id="map"></div>
-            <img id="utilityIMG" />
+            <div id="map-loading-icon">OMW 🧐</div>
           </aside>
         </div>
       </div>
@@ -67,6 +71,7 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"
     ></script>
+
     <script
       type="text/javascript"
       src="../public/javascripts/result.js"
