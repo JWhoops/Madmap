@@ -417,8 +417,11 @@ a[href^="https://maps.google.com/maps"] {
     font-size: 1.2em;
     margin-bottom: 5px;
   }
+  #map-container {
+    margin-top: 20px;
+  }
   #map-container #map-loading-icon {
-    font-size: 2.5em;
+    font-size: 1.8em;
   }
   #detail-container {
     margin-top: 0px;

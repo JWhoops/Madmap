@@ -387,8 +387,9 @@ a[href^="https://maps.google.com/maps"] {
   }
 
   #map-container {
+    margin-top: 20px;
     #map-loading-icon {
-      font-size: 2.5em;
+      font-size: 1.8em;
     }
   }
 
