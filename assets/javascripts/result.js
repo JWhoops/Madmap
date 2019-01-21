@@ -4,7 +4,6 @@ function initMap() {
   // init direction service
   const directionsService = new google.maps.DirectionsService();
   const directionsDisplay = new google.maps.DirectionsRenderer();
-
   // search value
   const sValue = new URLSearchParams(document.location.search.substring(1)).get(
     "sValue"
@@ -355,8 +354,8 @@ function initMap() {
     }
   });
   // lightbox 2 option
-  lightbox.option({
-    resizeDuration: 100,
-    wrapAround: true
-  });
+  // lightbox.option({
+  //   resizeDuration: 100,
+  //   wrapAround: true
+  // });
 }
