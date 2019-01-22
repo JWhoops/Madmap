@@ -48,7 +48,7 @@ body {
   height: 100%;
   width: 100%;
   transition: height 0.5s;
-  border: 1px solid #c5050c;
+  border: 1px solid darkgrey;
 }
 a[href^="http://maps.google.com/maps"] {
   display: none !important;
@@ -153,6 +153,7 @@ a[href^="https://maps.google.com/maps"] {
   margin: 10px auto;
   width: 60%;
 }
+
 .main-container {
   margin-top: 30px;
 }
@@ -189,7 +190,7 @@ a[href^="https://maps.google.com/maps"] {
 }
 .card {
   border: none;
-  border-bottom: 1px solid #c5050c;
+  border-bottom: 1px solid darkgrey;
   padding: 20px;
   padding-right: 0;
   position: relative;
@@ -218,7 +219,7 @@ a[href^="https://maps.google.com/maps"] {
   .card-img {
     width: 42%;
     display: inline-block;
-    border: 1px solid $uw-color;
+    border: 1px solid black;
   }
   .card-annotation {
     font-size: 1.25em !important;
@@ -237,6 +238,7 @@ a[href^="https://maps.google.com/maps"] {
   position: absolute;
   top: 45%;
   left: 50%;
+  transform: scaleX(-50%);
   transform: rotateZ(45deg);
   .sk-cube {
     float: left;
@@ -317,20 +319,20 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 @media (max-width: 768px) {
+  .main-container {
+    margin-top: 50px;
+  }
+
   .card {
     .card-title {
       font-size: 1.5em;
     }
   }
 
-  .sk-folding-cube {
-    left: 45%;
-  }
-
   #map-container {
     order: -1;
-    margin-top: 20px;
     height: 40vh !important;
+    margin-top: 0;
     padding: {
       left: 0 !important;
       right: 0 !important;
@@ -366,12 +368,10 @@ a[href^="https://maps.google.com/maps"] {
     #nav-center-container {
       font-size: 1.6em;
     }
-
     #back-btn .icon {
       width: 1.8em;
     }
   }
-
   .card {
     padding: 5px;
     padding-top: 10px;
@@ -384,10 +384,13 @@ a[href^="https://maps.google.com/maps"] {
       font-size: 1.2em;
       margin-bottom: 5px;
     }
+
+    .card-annotation {
+      font-size: 1em !important;
+    }
   }
 
   #map-container {
-    margin-top: 20px;
     #map-loading-icon {
       font-size: 1.8em;
     }

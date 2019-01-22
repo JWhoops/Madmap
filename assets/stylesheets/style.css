@@ -51,7 +51,7 @@ body {
   width: 100%;
   -webkit-transition: height 0.5s;
   transition: height 0.5s;
-  border: 1px solid #c5050c;
+  border: 1px solid darkgrey;
 }
 
 a[href^="http://maps.google.com/maps"] {
@@ -207,7 +207,7 @@ a[href^="https://maps.google.com/maps"] {
 
 .card {
   border: none;
-  border-bottom: 1px solid #c5050c;
+  border-bottom: 1px solid darkgrey;
   padding: 20px;
   padding-right: 0;
   position: relative;
@@ -241,7 +241,7 @@ a[href^="https://maps.google.com/maps"] {
 .card .card-img {
   width: 42%;
   display: inline-block;
-  border: 1px solid #c5050c;
+  border: 1px solid black;
 }
 
 .card .card-annotation {
@@ -260,6 +260,8 @@ a[href^="https://maps.google.com/maps"] {
   position: absolute;
   top: 45%;
   left: 50%;
+  -webkit-transform: scaleX(-50%);
+          transform: scaleX(-50%);
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
 }
@@ -360,18 +362,18 @@ a[href^="https://maps.google.com/maps"] {
 }
 
 @media (max-width: 768px) {
+  .main-container {
+    margin-top: 50px;
+  }
   .card .card-title {
     font-size: 1.5em;
-  }
-  .sk-folding-cube {
-    left: 45%;
   }
   #map-container {
     -webkit-box-ordinal-group: 0;
         -ms-flex-order: -1;
             order: -1;
-    margin-top: 20px;
     height: 40vh !important;
+    margin-top: 0;
     padding-left: 0 !important;
     padding-right: 0 !important;
     height: 50vh;
@@ -417,8 +419,8 @@ a[href^="https://maps.google.com/maps"] {
     font-size: 1.2em;
     margin-bottom: 5px;
   }
-  #map-container {
-    margin-top: 20px;
+  .card .card-annotation {
+    font-size: 1em !important;
   }
   #map-container #map-loading-icon {
     font-size: 1.8em;
@@ -453,7 +455,7 @@ body {
   font-family: "Chakra Petch", sans-serif;
 }
 
-.main-container {
+.icon-container {
   background: rgba(237, 237, 237, 0);
   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(237, 237, 237, 0)), color-stop(53%, rgba(246, 246, 246, 0.53)), color-stop(100%, #ededed));
   background: -webkit-gradient(linear, left top, right top, from(rgba(237, 237, 237, 0)), color-stop(53%, rgba(246, 246, 246, 0.53)), to(#ededed));
@@ -461,7 +463,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ededed', GradientType=1 );
 }
 
-.main-container > * {
+.icon-container > * {
   margin: 1%;
 }
 

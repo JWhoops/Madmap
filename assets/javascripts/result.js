@@ -343,14 +343,16 @@ function initMap() {
   let scrollPos = 0; // Initial state
   // adding scroll event
   window.addEventListener("scroll", () => {
-    if (!specMode) {
-      // detects new state and compares it with the new one
-      if (document.body.getBoundingClientRect().top > scrollPos) {
-        $(".nav").show();
-      } else {
-        $(".nav").hide("fast");
-      } // saves the new position for iteration.
-      scrollPos = document.body.getBoundingClientRect().top;
+    if ($(window).width() > 768) {
+      if (!specMode) {
+        // detects new state and compares it with the new one
+        if (document.body.getBoundingClientRect().top > scrollPos) {
+          $(".nav").show();
+        } else {
+          $(".nav").hide("fast");
+        } // saves the new position for iteration.
+        scrollPos = document.body.getBoundingClientRect().top;
+      }
     }
   });
   // lightbox 2 option
