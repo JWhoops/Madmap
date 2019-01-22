@@ -356,8 +356,9 @@ function initMap() {
     }
   });
   // lightbox 2 option
-  // lightbox.option({
-  //   resizeDuration: 100,
-  //   wrapAround: true
-  // });
+  lightbox.option({
+    resizeDuration: 100,
+    wrapAround: true,
+    fadeDuration: 100
+  });
 }
