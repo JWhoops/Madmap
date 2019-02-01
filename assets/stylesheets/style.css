@@ -259,11 +259,15 @@ a[href^="https://maps.google.com/maps"] {
   height: 40px;
   position: absolute;
   top: 45%;
-  left: 50%;
-  -webkit-transform: scaleX(-50%);
-          transform: scaleX(-50%);
+  left: 0;
+  right: 0;
   -webkit-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
+}
+
+.sk-folding-cube margin {
+  left: auto;
+  right: auto;
 }
 
 .sk-folding-cube .sk-cube {
