@@ -134,7 +134,7 @@ function initMap() {
     const disTag = document.createElement("span");
     const textContainer = document.createElement("div");
     $(hTag).text(obj.name);
-    $(imgTag).attr("src", obj.bImage);
+    $(imgTag).attr("src", "../images/wisconsin_logo.svg");
     $(disTag).text(`${obj.dist} miles from me`);
     if ($(window).width() <= 576)
       $(desTag).text(`${obj.description.substring(0, 20)} ...`);
